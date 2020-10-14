@@ -2,6 +2,7 @@ import requests
 import urllib3
 import random
 import xlrd
+import time
 
 def createCoupon(productIdList):
     from merchant_pc.getCookie import getCookies
@@ -15,11 +16,18 @@ def createCoupon(productIdList):
     '''设置请求数据'''
     x=random.randint(100,200)
     name='Python优惠券'+str(x)
+    #recTime=time.strftime('%Y-%m-%dT%H:%M:%S',time.localtime()) #"2020-10-24T23:59:59"
+    #effTime=time.strftime('%Y-%m-%dT%H:%M:%S',time.localtime())
+    from merchant_pc.getTime import getAddMinutesTime,getAddDaysTime
+    recTime=getAddMinutesTime()
+    effTime=getAddMinutesTime()
+    recEndTime=getAddDaysTime()
+    effEndTime=getAddDaysTime()
     #orderMinAmount——满足的金额，couponAmount——优惠券的金额
     #productIdList适用商品列表,["p5985277","p5985276","p5985275","p5985274"]
-    requestData = {"batchName":name,"acquireStartTime":"2020-10-13T15:44:19",
-                   "acquireEndTime":"2020-10-24T23:59:59","effectiveStartDate":"2020-10-13T15:44:27",
-                   "effectiveEndDate":"2020-10-24T23:59:59","orderMinAmount":"20","couponAmount":"10",
+    requestData = {"batchName":name,"acquireStartTime":recTime,
+                   "acquireEndTime":recEndTime,"effectiveStartDate":effTime,
+                   "effectiveEndDate":effEndTime,"orderMinAmount":"20","couponAmount":"10",
                    "couponTotalCount":"100","receiveNumPerUser":"5","useConditionType":2,
                    "productIdList":productIdList,"currency":"CNY","isShowInPage":1}
     urllib3.disable_warnings()
@@ -36,8 +44,8 @@ if __name__ == '__main__':
         if i != 0:
             pls = data.col_values(0, i, i + 3)  # 读去第0列，第i行到第i+3行数据
             i += 3
-            productplIdList = str(pls).replace("'", "\"")
+            nn = str(pls).replace("'", "\"")
             #print(productplIdList)
-            createCoupon(productIdList)
+            createCoupon(nn)
 
-    #createCoupon()
+    #createCoupon(),productplIdList

@@ -38,5 +38,7 @@ def getProductId():
         categoryId = item['categoryId']
         categoryName = item['categoryName']
         sheet.append([productId,productName,brandId,brandName,categoryId,categoryName])
-        wk.save('D:\python\study\商品信息.xlsx')
+        wk.save('/Users/sun/PycharmProjects/商品信息.xlsx')
     print('输出完毕！')
+if __name__ == '__main__':
+    getProductId()

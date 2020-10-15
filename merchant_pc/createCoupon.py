@@ -1,10 +1,8 @@
 import requests
 import urllib3
 import random
-import xlrd
-import time
 
-def createCoupon(productIdList):
+def createCoupon():
     from merchant_pc.getCookie import getCookies
     Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
@@ -15,37 +13,27 @@ def createCoupon(productIdList):
                }
     '''设置请求数据'''
     x=random.randint(100,200)
-    name='Python优惠券'+str(x)
-    #recTime=time.strftime('%Y-%m-%dT%H:%M:%S',time.localtime()) #"2020-10-24T23:59:59"
-    #effTime=time.strftime('%Y-%m-%dT%H:%M:%S',time.localtime())
-    from merchant_pc.getTime import getAddMinutesTime,getAddDaysTime
-    recTime=getAddMinutesTime()
-    effTime=getAddMinutesTime()
-    recEndTime=getAddDaysTime()
+    name='多品牌+多类目'#+str(x)
+    # orderMinAmount——满足的金额，couponAmount——优惠券的金额
+    # productIdList适用商品列表，全场通用则传null,指定商品["p5985277","p5985276","p5985275","p5985274"]
+    # useConditionType：1全部商品，2.指定商品
+    from merchant_pc.getTime import getAddDaysTime,getAddMinutesTime
+    actStartTime=getAddMinutesTime()  #"2020-10-24T23:59:59"
+    actEndTime=getAddDaysTime()
+    effStartTime=getAddMinutesTime()
     effEndTime=getAddDaysTime()
-    #orderMinAmount——满足的金额，couponAmount——优惠券的金额
-    #productIdList适用商品列表,["p5985277","p5985276","p5985275","p5985274"]
-    requestData = {"batchName":name,"acquireStartTime":recTime,
-                   "acquireEndTime":recEndTime,"effectiveStartDate":effTime,
-                   "effectiveEndDate":effEndTime,"orderMinAmount":"20","couponAmount":"10",
-                   "couponTotalCount":"100","receiveNumPerUser":"5","useConditionType":2,
-                   "productIdList":productIdList,"currency":"CNY","isShowInPage":1}
+    requestData = {"batchName":name,"acquireStartTime":actStartTime,
+                   "acquireEndTime":actEndTime,"effectiveStartDate":effStartTime,
+                   "effectiveEndDate":effEndTime,"orderMinAmount":"200","couponAmount":"100",
+                   "couponTotalCount":"100","receiveNumPerUser":"5","useConditionType":1,
+                   "productIdList":None,
+                   "currency":"CNY","isShowInPage":1}
     urllib3.disable_warnings()
     data = requests.post('https://www.shop2cn.com/service/marketing/api/yhq/create', json=requestData,
                          headers=headers,
                          verify=False)
     response = data.text
     print(response)
-if __name__ == '__main__':
-    wk=xlrd.open_workbook('/Users/sun/PycharmProjects/商品信息.xlsx')
-    data=wk.sheets()[1]
-    # 想要创建几张优惠券range后的数字就填几
-    for i in range(5):
-        if i != 0:
-            pls = data.col_values(0, i, i + 3)  # 读去第0列，第i行到第i+3行数据
-            i += 3
-            #nn = str(pls).replace("'", "")
-            #print(productplIdList)
-            createCoupon(pls)
 
-    #createCoupon(),productplIdList
+if __name__ == '__main__':
+    createCoupon()

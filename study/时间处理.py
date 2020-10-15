@@ -1,5 +1,5 @@
 #author : comma
-#date : 2020/10/15 12:36
+#date : 2020/10/15 14:19
 
 import time
 import datetime
@@ -8,7 +8,7 @@ import datetime
 def getAddMinutesTime():
     data=datetime.datetime.now()
     offset=datetime.timedelta(minutes=2)
-    result=(data+offset).strftime('%Y-%m-%dT%H:%M:%S')
+    result=(data+offset).strftime('%Y-%m-%dT%H:%M:%S') # 时间格式化
     return result
 
 #当前时间+n天

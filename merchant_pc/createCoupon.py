@@ -44,8 +44,8 @@ if __name__ == '__main__':
         if i != 0:
             pls = data.col_values(0, i, i + 3)  # 读去第0列，第i行到第i+3行数据
             i += 3
-            nn = str(pls).replace("'", "\"")
+            #nn = str(pls).replace("'", "")
             #print(productplIdList)
-            createCoupon(nn)
+            createCoupon(pls)
 
     #createCoupon(),productplIdList

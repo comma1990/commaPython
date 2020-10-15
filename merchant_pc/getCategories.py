@@ -6,6 +6,7 @@
 import requests
 import urllib3
 import json
+import openpyxl
 
 def getCategories():
     from merchant_pc.getCookie import getCookies
@@ -25,11 +26,19 @@ def getCategories():
     return categories
     #print(categories)
 
+# 通过循环将分类信息打印到Excel表中
 if __name__ == '__main__':
+    wk=openpyxl.Workbook()
+    sheet=wk.create_sheet('分类')
+    sheet.append(['分类名称','分类id'])
+
     data=getCategories()
     for item in data:
-        secChild=item[0]
-        for sc in secChild:
-            for thirChild in sc['children']:
-                for last in thirChild[]:
-                    for lastChild
+        firChild=item['children']
+        for sec in firChild:
+            secChild=sec['children']
+            for thirChild in secChild:
+                name=thirChild['label']
+                pid=thirChild['pid']
+                sheet.append([name,pid])
+    wk.save('/Users/sun/PycharmProjects/data/商品分类信息.xlsx')

@@ -37,26 +37,26 @@ if __name__ == '__main__':
     # merchant_pc.create_roles.create_zhibozhuanyuan()
 
     # '''创建商品,循环创建'''
-    wk = xlrd.open_workbook('D:\python\study\中免商品信息.xlsx')
-    sheet = wk.sheets()[1]
-    x = int(input('请输入你想从第几张图片开始创建商品：'))
-    if x>sheet.nrows:
-        print('商品图片数量不足！！！')
-    else:
-
-        n = int(input('请输入要创建的商品数量：'))
-        if n > sheet.nrows - x:
-            print('商品图片数量不足！')
-        else:
-            for item in range(n):
-                pic = sheet.col_values(6, x, x + 1)     # 从表中索引为6列取值，值的返回是x行到x+1行
-                merchant_pc.createProduct.createProduct(Cookie, pic)
-                x += 1
+    # wk = xlrd.open_workbook('D:\python\study\中免商品信息.xlsx')
+    # sheet = wk.sheets()[1]
+    # x = int(input('请输入你想从第几张图片开始创建商品：'))
+    # if x>sheet.nrows:
+    #     print('商品图片数量不足！！！')
+    # else:
+    #
+    #     n = int(input('请输入要创建的商品数量：'))
+    #     if n > sheet.nrows - x:
+    #         print('商品图片数量不足！')
+    #     else:
+    #         for item in range(n):
+    #             pic = sheet.col_values(6, x, x + 1)     # 从表中索引为6列取值，值的返回是x行到x+1行
+    #             merchant_pc.createProduct.createProduct(Cookie, pic)
+    #             x += 1
 
 
     # 创建优惠券
     # from merchant_pc.createCoupon import createCoupon
-    # createCoupon()
+    # createCoupon(Cookie)
 
     # 获取商品列表
     # from merchant_pc.getProductId import getProductId

@@ -2,9 +2,7 @@ import requests
 import urllib3
 import random
 
-def createCoupon():
-    from merchant_pc.getCookie import getCookies
-    Cookie = getCookies()
+def createCoupon(Cookie):
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
                'Host': 'www.shop2cn.com',
@@ -24,7 +22,7 @@ def createCoupon():
     effEndTime=getAddDaysTime()
     requestData = {"batchName":name,"acquireStartTime":actStartTime,
                    "acquireEndTime":actEndTime,"effectiveStartDate":effStartTime,
-                   "effectiveEndDate":effEndTime,"orderMinAmount":"200","couponAmount":"100",
+                   "effectiveEndDate":effEndTime,"orderMinAmount":"20","couponAmount":"10",
                    "couponTotalCount":"100","receiveNumPerUser":"5","useConditionType":1,
                    "productIdList":None,
                    "currency":"CNY","isShowInPage":1}
@@ -36,4 +34,6 @@ def createCoupon():
     print(response)
 
 if __name__ == '__main__':
-    createCoupon()
+    from merchant_pc.getCookie import getCookies
+    Cookie = getCookies()
+    createCoupon(Cookie)

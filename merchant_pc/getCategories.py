@@ -9,9 +9,9 @@ import json
 import openpyxl
 
 
-def getCategories():
-    from merchant_pc.getCookie import getCookies
-    Cookie = getCookies()
+def getCategories(Cookie):
+    # from merchant_pc.getCookie import getCookies
+    # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
                'Host': 'www.shop2cn.com',
@@ -30,11 +30,14 @@ def getCategories():
 
 # 通过循环将分类信息打印到Excel表中
 if __name__ == '__main__':
+    from merchant_pc.getCookie import getCookies
+    Cookie = getCookies()
+
     wk = openpyxl.Workbook()
     sheet = wk.create_sheet('分类')
     sheet.append(['分类名称', '分类id'])
 
-    data = getCategories()
+    data = getCategories(Cookie)
     for item in data:
         firChild = item['children']
         for sec in firChild:
@@ -43,4 +46,5 @@ if __name__ == '__main__':
                 name = thirChild['label']
                 pid = thirChild['pid']
                 sheet.append([name, pid])
-    wk.save('/Users/sun/PycharmProjects/data/商品分类信息.xlsx')
+    wk.save('D:\python\study\商品分类信息.xlsx')
+    print('商品分类信息输出完成！')

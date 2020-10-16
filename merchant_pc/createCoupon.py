@@ -3,6 +3,8 @@ import urllib3
 import random
 
 def createCoupon(Cookie):
+    # from merchant_pc.getCookie import getCookies  # cookie获取提取到方法外
+    # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
                'Host': 'www.shop2cn.com',

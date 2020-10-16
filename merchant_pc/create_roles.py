@@ -2,12 +2,10 @@ import random
 import urllib3
 import requests
 
-'''创建客服专员'''
-
-
-def create_kefuzhuanyuan():
-    from merchant_pc.getCookie import getCookies
-    Cookie = getCookies()
+#'''创建客服专员'''
+def create_kefuzhuanyuan(Cookie):
+    # from merchant_pc.getCookie import getCookies
+    # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
                'Host': 'www.shop2cn.com',
@@ -29,10 +27,10 @@ def create_kefuzhuanyuan():
     print(response)
 
 
-    '''创建邀请客服'''
-def create_yaoqingkefu():
-    from merchant_pc.getCookie import getCookies
-    Cookie = getCookies()
+ #   '''创建邀请客服'''
+def create_yaoqingkefu(Cookie):
+    # from merchant_pc.getCookie import getCookies
+    # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
                'Host': 'www.shop2cn.com',
@@ -54,10 +52,10 @@ def create_yaoqingkefu():
     print(response)
 
 
-'''创建高级管理员'''
-def create_gaojiguanliyuan():
-    from merchant_pc.getCookie import getCookies
-    Cookie = getCookies()
+#'''创建高级管理员'''
+def create_gaojiguanliyuan(Cookie):
+    # from merchant_pc.getCookie import getCookies
+    # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
                'Host': 'www.shop2cn.com',
@@ -80,10 +78,10 @@ def create_gaojiguanliyuan():
     print(response)
 
 
-'''创建普通管理员'''
-def create_putongguanliyuan():
-    from merchant_pc.getCookie import getCookies
-    Cookie = getCookies()
+#'''创建普通管理员'''
+def create_putongguanliyuan(Cookie):
+    # from merchant_pc.getCookie import getCookies
+    # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
                'Host': 'www.shop2cn.com',
@@ -106,10 +104,10 @@ def create_putongguanliyuan():
     print(response)
 
 
-'''创建客服主管'''
-def create_kefuzhuguan():
-    from merchant_pc.getCookie import getCookies
-    Cookie = getCookies()
+#'''创建客服主管'''
+def create_kefuzhuguan(Cookie):
+    # from merchant_pc.getCookie import getCookies
+    # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
                'Host': 'www.shop2cn.com',
@@ -131,10 +129,10 @@ def create_kefuzhuguan():
     response = data.text
     print(response)
 
-'''创建发货和仓库管理员'''
-def create_fahuohecangkuguanliyuan():
-    from merchant_pc.getCookie import getCookies
-    Cookie = getCookies()
+#'''创建发货和仓库管理员'''
+def create_fahuohecangkuguanliyuan(Cookie):
+    # from merchant_pc.getCookie import getCookies
+    # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
                'Host': 'www.shop2cn.com',
@@ -156,10 +154,10 @@ def create_fahuohecangkuguanliyuan():
     response = data.text
     print(response)
 
-'''创建销售专员'''
-def create_xiaoshouzhuanyuan():
-    from merchant_pc.getCookie import getCookies
-    Cookie = getCookies()
+#'''创建销售专员'''
+def create_xiaoshouzhuanyuan(Cookie):
+    # from merchant_pc.getCookie import getCookies
+    # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
                'Host': 'www.shop2cn.com',
@@ -181,10 +179,10 @@ def create_xiaoshouzhuanyuan():
     response = data.text
     print(response)
 
-'''创建商品管理员'''
-def create_shangpingguanliyuan():
-    from merchant_pc.getCookie import getCookies
-    Cookie = getCookies()
+#'''创建商品管理员'''
+def create_shangpingguanliyuan(Cookie):
+    # from merchant_pc.getCookie import getCookies
+    # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
                'Host': 'www.shop2cn.com',
@@ -206,10 +204,10 @@ def create_shangpingguanliyuan():
     response = data.text
     print(response)
 
-'''创建财务'''
-def create_caiwu():
-    from merchant_pc.getCookie import getCookies
-    Cookie = getCookies()
+#'''创建财务'''
+def create_caiwu(Cookie):
+    # from merchant_pc.getCookie import getCookies
+    # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
                'Host': 'www.shop2cn.com',
@@ -231,10 +229,10 @@ def create_caiwu():
     response = data.text
     print(response)
 
-'''创建美工'''
-def create_meigong():
-    from merchant_pc.getCookie import getCookies
-    Cookie = getCookies()
+#'''创建美工'''
+def create_meigong(Cookie):
+    # from merchant_pc.getCookie import getCookies
+    # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
                'Host': 'www.shop2cn.com',
@@ -256,10 +254,10 @@ def create_meigong():
     response = data.text
     print(response)
 
-'''创建直播专员'''
-def create_zhibozhuanyuan():
-    from merchant_pc.getCookie import getCookies
-    Cookie = getCookies()
+#'''创建直播专员'''
+def create_zhibozhuanyuan(Cookie):
+    # from merchant_pc.getCookie import getCookies
+    # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
                'Host': 'www.shop2cn.com',

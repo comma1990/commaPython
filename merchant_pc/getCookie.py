@@ -6,6 +6,8 @@ def getCookies():
     urllib3.disable_warnings()
     host = 'www.shop2cn.com'
     url = 'https://www.shop2cn.com/service/shop/api/accountlogin'  # 公版登录地址
+    requestData = {"username": "18862396927",
+                   "password": "aLhnKT0fG+oQRwX2MG0HLeDB9DG2iYSes8VR4w36oPaSJYVfgFXxePzr0tlKfkXjildB2wIrDdDAZC/MBkr4IJ4zW2iacwAdN6Srv+UjtTKuRI6GzjRuf0WmHYUS/QcFD+4OJqOrQYkxWsR5awgDgCt9TyLQPHz0Bk84cwghuZA="}
 
     ###############这块是中免的请求参数###########################
         # host='shop.cdfmembers.com'    # 中免host
@@ -18,8 +20,6 @@ def getCookies():
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
                'Host': host}
-    requestData = {"username": "18862396927",
-                   "password": "aLhnKT0fG+oQRwX2MG0HLeDB9DG2iYSes8VR4w36oPaSJYVfgFXxePzr0tlKfkXjildB2wIrDdDAZC/MBkr4IJ4zW2iacwAdN6Srv+UjtTKuRI6GzjRuf0WmHYUS/QcFD+4OJqOrQYkxWsR5awgDgCt9TyLQPHz0Bk84cwghuZA="}
 
     data = requests.post(url, json=requestData, headers=headers, verify=False)
     cookies = data.cookies.items()

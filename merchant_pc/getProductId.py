@@ -11,7 +11,7 @@ import openpyxl
 def getProductId():
     wk = openpyxl.Workbook()
     sheet = wk.create_sheet()
-    sheet.append(['productId','商品名称','品牌id','品牌名','分类id','分类'])
+    sheet.append(['productId','商品名称','品牌id','品牌名','分类id','分类','商品图片'])
 
     from merchant_pc.getCookie import getCookies
     Cookie = getCookies()
@@ -22,7 +22,7 @@ def getProductId():
                'Cookie': Cookie
                }
     # 设置请求数据
-    requestData = {"pageIndex": 1, "pageSize": 100}
+    requestData = {"pageIndex": 3, "pageSize": 100}
     urllib3.disable_warnings()
     data = requests.post('https://www.shop2cn.com/service/order/api/product/list', json=requestData,
                          headers=headers,
@@ -37,8 +37,9 @@ def getProductId():
         brandName=item['brandName']
         categoryId = item['categoryId']
         categoryName = item['categoryName']
-        sheet.append([productId,productName,brandId,brandName,categoryId,categoryName])
-        wk.save('/Users/sun/PycharmProjects/商品信息.xlsx')
+        pic=item['pics'][0]
+        sheet.append([productId,productName,brandId,brandName,categoryId,categoryName,pic])
+    wk.save('D:\python\study\商品信息.xlsx')
     print('输出完毕！')
 if __name__ == '__main__':
     getProductId()

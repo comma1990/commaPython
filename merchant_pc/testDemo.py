@@ -1,19 +1,22 @@
-import merchant_pc.create_roles,merchant_pc.createProduct
+# getCookie方法提取，所有方法必须传cookie字段
+import xlrd
+import merchant_pc.create_roles, merchant_pc.createProduct
 
-if __name__=='__main__':
-    #获取仓库名
-    from merchant_pc.getDepot import getDepot
-    getDepot()
+if __name__ == '__main__':
+    # 获取cookie
+    from merchant_pc.getCookie import getCookies
 
+    Cookie = getCookies()
 
-
-
+    # 获取仓库名
+    # from merchant_pc.getDepot import getDepot
+    # getDepot()
 
     # #from merchant_pc.create_roles import create_yaoqingkefu
     # '''创建客服专员'''
     # merchant_pc.create_roles.create_kefuzhuguan()
     # '''创建邀请专员'''
-    #merchant_pc.create_roles.create_yaoqingkefu()
+    # merchant_pc.create_roles.create_yaoqingkefu()
     # '''创建高级管理员'''
     # merchant_pc.create_roles.create_gaojiguanliyuan()
     # '''普通管理员'''
@@ -33,16 +36,29 @@ if __name__=='__main__':
     # '''创建直播专员'''
     # merchant_pc.create_roles.create_zhibozhuanyuan()
 
-    #'''创建商品,循环创建'''
-    # i=1
-    # while i<6:
-    # merchant_pc.createProduct.createProduct()
-    #     i+=1
-    #创建优惠券
+    # '''创建商品,循环创建'''
+
+    wk = xlrd.open_workbook('D:\python\study\商品图片地址.xlsx')
+    sheet = wk.sheets()[0]
+    x = int(input('请输入你想从第几张图片开始创建商品：'))
+    if x>sheet.nrows:
+        print('商品图片数量不足！！！')
+    else:
+
+        n = int(input('请输入要创建的商品数量：'))
+        if n > sheet.nrows - x:
+            print('商品图片数量不足！')
+        else:
+            for item in range(n):
+                pic = sheet.col_values(0, x, x + 1)
+                merchant_pc.createProduct.createProduct(Cookie, pic)
+                x += 1
+
+
+    # 创建优惠券
     # from merchant_pc.createCoupon import createCoupon
     # createCoupon()
 
-    #获取商品列表
+    # 获取商品列表
     # from merchant_pc.getProductId import getProductId
     # getProductId()
-

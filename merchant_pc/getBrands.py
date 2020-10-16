@@ -23,23 +23,24 @@ def getBrands(i):
     data = requests.get(url, headers=headers, verify=False)
     response = data.text
     bransList = json.loads(response)['data']['list']
-    # print(bransList)
+    #print(bransList)
     return bransList
 
 
 if __name__ == '__main__':
+    #getBrands('a')
     #print(getBrands('b'))
 
     wk=openpyxl.Workbook()
     sheet=wk.create_sheet('品牌')
     sheet.append(['名字','品牌id'])
 
-    for item in range(ord('a'),ord('z')+1):  # ord('a')将字母a转成数字
-        brandList=getBrands(chr(item))      #chr(22)将数字转换成字母
+    for item in range(26):
+        brandList=getBrands(chr(item+ord('A')))      # ord('a')将字母a转成数字
         #print(brandList)
         for brand in brandList:
             if brandList !=None:
                 name=brand['name']
                 id=brand['id']
                 sheet.append([name,id])
-    wk.save('/Users/sun/PycharmProjects/data/品牌信息表.xlsx')
+    wk.save('D:\python\study\品牌信息表.xlsx')

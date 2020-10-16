@@ -2,7 +2,8 @@
 #date : 2020/10/15 10:43
 
 #   从excel表中读取数据
-import xlpy
+for item in range(26):
+    print(chr(item+ord('a')))
 
 
 

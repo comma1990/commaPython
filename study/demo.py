@@ -1,12 +1,15 @@
 #author : comma
 #date : 2020/10/15 10:43
 
-#   从excel表中读取数据
-for item in range(26):
-    print(chr(item+ord('a')))
+
+#bool运算符，比较运算符，位运算符，input函数，优先级
 
 
 
+
+# #   打印26个字母
+# for item in range(26):
+#     print(chr(item+ord('a')))
 
 # 时间处理
 # import time

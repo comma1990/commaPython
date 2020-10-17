@@ -1,11 +1,11 @@
 # getCookie方法提取，所有方法必须传cookie字段
 import xlrd
 import merchant_pc.create_roles, merchant_pc.createProduct
+import openpyxl
 
 if __name__ == '__main__':
     # 获取cookie
     from merchant_pc.getCookie import getCookies
-
     Cookie = getCookies()
 
     # 获取仓库名
@@ -57,6 +57,8 @@ if __name__ == '__main__':
     # 创建优惠券
     # from merchant_pc.createCoupon import createCoupon
     # createCoupon(Cookie)
+
+
 
     # 获取商品列表
     # from merchant_pc.getProductId import getProductId

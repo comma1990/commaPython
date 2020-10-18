@@ -2,7 +2,15 @@
 #date : 2020/10/15 10:43
 
 
-#bool运算符，比较运算符，位运算符，input函数，优先级
+n=input('请输入你要创建活动的商品个数：')
+x=0
+def digui():
+    for i in range(int(n)):
+        if i!=3:
+            x+=1
+        if x!=0:
+            digui()
+        print(x)
 
 
 

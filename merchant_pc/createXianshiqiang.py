@@ -22,7 +22,7 @@ def createXsq():
     promotionTimeEndTime=getAddDaysTime2()
 
     '''设置请求数据'''
-    requestData = {"name": "py测试", "promotionTime": [promotionBeginTime, promotionBeginTime],
+    requestData = {"name": "py测试", "promotionTime": [promotionBeginTime, promotionTimeEndTime],
                    "limitType": 1, "limitNum": "", "previewTime": 0, "preTime": "",
                    "beginTime": beginTime, "endTime": endTime,
                    "productList": [{"productId": "p7084378", "catalogList":

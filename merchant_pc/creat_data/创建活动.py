@@ -57,3 +57,27 @@ def createXsq():
     #depotId = json.loads(response)['data']['depotList'][1]['depotId']
     print(response)
     return response
+
+if __name__ == '__main__':
+    wk=openpyxl.Workbook()
+    sheet=wk.create_sheet('活动商品列表')
+    x=0     # 计数器
+    n=int(input('请输入你想添加的商品个数：'))
+    #discount = 5.6  # 设置折扣
+    discount=int(input('请输入折扣：'))
+    # 遍历商品列表，并在商品规格上添加活动库存信息
+    from merchant_pc.getProduceList import getPorduceList   #获取商品列表（创建活动时拉取的列表）
+    for item in getPorduceList(2):   #遍历商品列表
+        from merchant_pc.getPoductActivityInfo import getPoductActivityInfo
+        if getPoductActivityInfo(item['id'])==None:     #判断商品没有活动信息后，添加规格的活动信息，并添加到Excel表中
+            for catlog in item['catalogList']:  #遍历规格列表
+                catlog['activityRealStock']=0    #添加活动真实库存
+                catlog['activityStock']=0    # 添加活动库存 ——为0的时候默认使用全部库存
+                catlog['discount']=discount     # 添加折扣信息
+                catlog['discountPrice']=catlog['salePrice']*discount/10   # 添加折后价格
+                x+=1
+                if x>n:
+                    break
+                sheet.append([item['id'],str(catlog).replace('\'','"')])
+    wk.save('D:\python\study\活动商品列表.xlsx')
+    # 表中的数据都是添加好活动信息的，现在需要提取出来，id和category组合作为请求参数

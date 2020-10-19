@@ -14,7 +14,7 @@ actProIdList = []
 for item in range(1, data.nrows):  # 从1开始遍历
     actProId = data.col_values(0, item, item + 1)  # 读去第0列，第i行到第i+1行数据
 
-    from merchant_pc.ProductInfo import getPoductActivityInfo
+    from merchant_pc.getPoductActivityInfo import getPoductActivityInfo
     if True:
     #if (getPoductActivityInfo(actProId)) != None:
         while i < n:    # 根据输入的数量，循环多少次

@@ -2,27 +2,58 @@
 # 日期 : 2020/10/17  10:14
 
 # 创建活动
+'''流程——①先获得商品列表输出到Excel表中getProductId
+        ②从商品列表中获取没有活动信息的商品getgetNoActivityProductId-----（调用了获取商品活动信息的方法getPoductActivityInfo）
+        ③向每个规格中添加活动信息，作为活动商品数据'''
 import requests
 import urllib3
 import json
 import openpyxl
 import xlrd
 
-if __name__ == '__main__':
-    wk = openpyxl.Workbook()
-    sheet = wk.create_sheet()
-    sheet.append(['productId', 'category'])
+def createXsq():
+    from merchant_pc.getCookie import getCookies  # cookie获取提取到方法外，调用该方法必须穿cookie
+    Cookie = getCookies()
+    headers = {'Accept': 'application/json, text/plain, */*',
+               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
+               'Host': 'www.shop2cn.com',
+               'Connection': 'keep - alive',
+               'Cookie': Cookie
+               }
+    from merchant_pc.getTime import getAddMinutesTime2,getAddDaysTime2,getAddDaysTime3,getAddMinutesTime3
+    beginTime=getAddMinutesTime3()
+    endTime=getAddDaysTime3()
+    promotionBeginTime=getAddMinutesTime2()
+    promotionTimeEndTime=getAddDaysTime2()
 
-    from merchant_pc.getProductList import getPorductList
-    for i in range(5):  # 循环5页的数据（getPorductList接口每次只返回20条数据）
-        plist = getPorductList(1)
-        for item in plist:
-            # 此处应该加个判断，如果商品有活动id，调用活动判断的方法，如果有活动执行下面代码块，如果没有打印商品不符合
-            from merchant_pc.ProductInfo import ProductInfo.get
-            productid = item['id']
-            categrorys = item['catalogList']
-            for cat in categrorys:
-                categrory = cat
-                sheet.append([productid, str(categrory)])
-                # print(productid,categrory)
-    wk.save('/Users/sun/PycharmProjects/活动商品.xlsx')
+    '''设置请求数据'''
+    requestData = {"name": "py测试", "promotionTime": [promotionBeginTime, promotionTimeEndTime],
+                   "limitType": 1, "limitNum": "", "previewTime": 0, "preTime": "",
+                   "beginTime": beginTime, "endTime": endTime,
+                   "productList": [{"productId": "p7084378", "catalogList":
+                       [{"catalogId": "c43699135", "buyingPrice": 0, "salePrice": 0.1, "stockNum": 100, "realStock": 100,
+                         "virtualStock": 0, "propertyValue": "白色", "sku": None, "barcode": None, "counterPrice": 0,
+                         "marketAmount": 0, "activityRealStock": 0, "activityStock": 0, "discount": "5.6",
+                         "discountPrice": "0.06"},
+                        {"catalogId": "c43699134", "buyingPrice": 0, "salePrice": 0.2, "stockNum": 200,
+                         "realStock": 200, "virtualStock": 0, "propertyValue": "黑色", "sku": None, "barcode": None,
+                         "counterPrice": 0, "marketAmount": 0, "activityRealStock": 0, "activityStock": 0,
+                         "discount": "5.6", "discountPrice": "0.11"}]},
+                                   {"productId": "p7084377", "catalogList": [
+                                       {"catalogId": "c43698270", "buyingPrice": 0, "salePrice": 0.1, "stockNum": 100,
+                                        "realStock": 100, "virtualStock": 0, "propertyValue": "白色", "sku": None,
+                                        "barcode": None, "counterPrice": 0, "marketAmount": 0, "activityRealStock": 0,
+                                        "activityStock": 0, "discount": "5.6", "discountPrice": "0.06"},
+                                       {"catalogId": "c43698269", "buyingPrice": 0, "salePrice": 0.2, "stockNum": 200,
+                                        "realStock": 200, "virtualStock": 0, "propertyValue": "黑色", "sku": None,
+                                        "barcode": None, "counterPrice": 0, "marketAmount": 0, "activityRealStock": 0,
+                                        "activityStock": 0, "discount": "5.6", "discountPrice": "0.11"}]}],
+                   "discountType": 0, "stockType": 0, "activityId": "", "activityType": 1, "sectionId": "4"}
+    urllib3.disable_warnings()
+    data = requests.post('https://www.shop2cn.com/service/mgmt/api/marketing/createEditPromotion', json=requestData,
+                         headers=headers,
+                         verify=False)
+    response = data.text
+    #depotId = json.loads(response)['data']['depotList'][1]['depotId']
+    print(response)
+    return response

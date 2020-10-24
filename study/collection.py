@@ -1,6 +1,13 @@
 # Author ： comma
 # 日期 : 2020/10/15  06:37
 
+
+######eval方法的使用###########
+# x = input('请输入一个数字：')
+# print(type(x), type(eval(x)))   # eval()去掉字符串最外侧的引号，如input函数得到的数据类型是str，去掉外侧的引号，就变成输入数据本身的类型了
+# num = eval(x) + 1               # 注意：input函数输入的是字符串类型再用eval函数会报错
+# print(num)
+
 # 记录学习过程中常用的方法
 ############random获取随机数##############
 # import random

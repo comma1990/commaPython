@@ -19,7 +19,7 @@ for item in range(1, data.nrows):
 for x in list:
     from merchant_pc.getPoductActivityInfo import getPoductActivityInfo
 
-    if getPoductActivityInfo(x) == None:
+    if bool(getPoductActivityInfo(x))== False:  #空列表的bool值为False
         actProIdList.append(x)
         i += 1
         if i == n:

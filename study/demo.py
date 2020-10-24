@@ -4,6 +4,20 @@
 
 
 
+########列表的操作：#################
+# 排序
+# list1=[0,9,5,7,2,3]
+# list1.sort()    # 升序
+# list1.sort(reverse=True)    # 倒序
+# print(list1)
+#print(sorted(list1))    # 内置函数
+#print(sorted(list1,reverse=True))   # 先升序排序，然后翻转，就是倒序
+
+# 列表表达式
+# list2=[i*i for i in range(1,10,2)]  # 范围1-10，步长为2，遍历结果是1，3，5，7，9；遍历结果自相乘
+# print(list2)
+####################################
+
 
 # #空列表的bool值为False
 # x=[]

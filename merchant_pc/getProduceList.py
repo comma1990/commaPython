@@ -7,9 +7,9 @@ import urllib3
 import json
 import openpyxl
 
-def getPorduceList(pageIndex): # pageIndex页码，你想获得哪页的数据
-    from merchant_pc.getCookie import getCookies  # cookie获取提取到方法外，调用该方法必须穿cookie
-    Cookie = getCookies()
+def getPorduceList(Cookie,pageIndex): # pageIndex页码，你想获得哪页的数据
+    # from merchant_pc.getCookie import getCookies  # cookie获取提取到方法外，调用该方法必须穿cookie
+    # Cookie = getCookies()
     #text/html,application/xhtml+xml,application/xml
     headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng, */*',
                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.80 Safari/537.36',

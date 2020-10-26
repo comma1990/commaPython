@@ -1,5 +1,5 @@
-# Author ： comma
-# 日期 : 2020/10/17  10:14
+#author : comma
+#date : 2020/10/26 19:09
 
 # 创建活动
 '''流程——①先获得商品列表输出到Excel表中getProductId
@@ -14,7 +14,7 @@ import random
 import datetime
 
 
-def createXsq(Cookie,productList):
+def createCuxiao(Cookie,productList):
     # from merchant_pc.getCookie import getCookies  # cookie获取提取到方法外，调用该方法必须穿cookie
     # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
@@ -34,11 +34,13 @@ def createXsq(Cookie,productList):
     秒杀：activityType=2，sectionId=5'''
     # x=random.randint(1,100) # 定义一个随机数用于创建活动名称使用
     date = datetime.datetime.now().strftime('%Y%m%d-%H%M')  # 获取当前时间用作创建活动名称使用
-    requestData = {"name": f"限时抢{date}号", "promotionTime": [promotionBeginTime, promotionTimeEndTime],
+    requestData = {"name": f"促销{date}号",'desc':'促销活动描述','notice':'促销活动公告', "promotionTime": [promotionBeginTime, promotionTimeEndTime],
                    "limitType": 1, "limitNum": "", "previewTime": 0, "preTime": "",
                    "beginTime": beginTime, "endTime": endTime,
                    "productList": productList,
-                   "discountType": 0, "stockType": 0, "activityId": "", "activityType": 2, "sectionId": "5"}
+                   "discountType": 0, "stockType": 0, "activityId": "", "activityType": 3,
+                   "banner":"http://pic1.shop2cn.com/G03/M06/C2/20/CgzUIF-WrWqAKtqZAAKrGn1IyNs104.png",
+                   "icon":"http://pic1.shop2cn.com/G03/M04/C4/41/CgzUIV-WrWSAFYo5AAAevkLagQU406.png"}
     urllib3.disable_warnings()
     data = requests.post('https://www.shop2cn.com/service/mgmt/api/marketing/createEditPromotion', json=requestData,
                          headers=headers,
@@ -81,4 +83,4 @@ if __name__ == '__main__':
             productList.append(dic)
 
         # print(productList)
-    createXsq(Cookie,productList)
+    createCuxiao(Cookie,productList)

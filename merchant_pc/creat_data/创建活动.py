@@ -14,7 +14,7 @@ import random
 import datetime
 
 
-def createXsq(Cookie,productList):
+def createXsq(Cookie,productList,sectionId):
     # from merchant_pc.getCookie import getCookies  # cookie获取提取到方法外，调用该方法必须穿cookie
     # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
@@ -38,7 +38,7 @@ def createXsq(Cookie,productList):
                    "limitType": 1, "limitNum": "", "previewTime": 0, "preTime": "",
                    "beginTime": beginTime, "endTime": endTime,
                    "productList": productList,
-                   "discountType": 0, "stockType": 0, "activityId": "", "activityType": 2, "sectionId": "5"}
+                   "discountType": 0, "stockType": 0, "activityId": "", "activityType": 1, "sectionId": sectionId}
     urllib3.disable_warnings()
     data = requests.post('https://www.shop2cn.com/service/mgmt/api/marketing/createEditPromotion', json=requestData,
                          headers=headers,
@@ -54,31 +54,37 @@ if __name__ == '__main__':
     productList = []  # 定义一个空列表接收商品id和规格信息
     x = 0  # 计数器
     sellerid = 500002398  # 商户id，查询商品信息需要
+    sectionType=eval(input('你想创建限时抢还是秒杀，1-限时抢，2-秒杀：'))
     n = int(input('请输入你想添加的商品个数：'))
     discount = eval(input('请输入折扣：'))  # 设置折扣
     # 遍历商品列表，并在商品规格上添加活动库存信息
     from merchant_pc.getProduceList import getPorduceList  # 获取商品列表（创建活动时拉取的列表）
+    pageindex=5
+    i=1
+    while i<pageindex:
+        for item in getPorduceList(Cookie,i):  # 遍历商品列表
+            productid = [item['id']]
+            dic = {}  # 定义一个字典接收商品id和规格信息，将字典添加到列表中
+            cateloglist = []  # 定义一个空规格列表，接收规格信息
+            from merchant_pc.getPoductActivityInfo import getPoductActivityInfo
 
-    for item in getPorduceList(Cookie,2):  # 遍历商品列表
-        productid = [item['id']]
-        dic = {}  # 定义一个字典接收商品id和规格信息，将字典添加到列表中
-        cateloglist = []  # 定义一个空规格列表，接收规格信息
-        from merchant_pc.getPoductActivityInfo import getPoductActivityInfo
-
-        if bool(getPoductActivityInfo(sellerid, productid)) == False:  # 判断商品没有活动信息后，添加规格的活动信息
-            for catlog in item['catalogList']:  # 遍历规格列表
-                # cateloglist = []  # 定义一个空规格列表，接收规格信息
-                catlog['activityRealStock'] = 0  # 添加活动真实库存
-                catlog['activityStock'] = 0  # 添加活动库存 ——为0的时候默认使用全部库存
-                catlog['discount'] = discount  # 添加折扣信息
-                catlog['discountPrice'] = catlog['salePrice'] * discount / 10  # 添加折后价格
-                cateloglist.append(catlog)
-            dic['productId'] = item['id']
-            dic['catalogList'] = cateloglist
-            x += 1
-            if x > n:
-                break
-            productList.append(dic)
+            if bool(getPoductActivityInfo(sellerid, productid)) == False:  # 判断商品没有活动信息后，添加规格的活动信息
+                for catlog in item['catalogList']:  # 遍历规格列表
+                    # cateloglist = []  # 定义一个空规格列表，接收规格信息
+                    catlog['activityRealStock'] = 0  # 添加活动真实库存
+                    catlog['activityStock'] = 0  # 添加活动库存 ——为0的时候默认使用全部库存
+                    catlog['discount'] = discount  # 添加折扣信息
+                    catlog['discountPrice'] = catlog['salePrice'] * discount / 10  # 添加折后价格
+                    cateloglist.append(catlog)
+                dic['productId'] = item['id']
+                dic['catalogList'] = cateloglist
+                x += 1
+                if x > n:
+                    break
+                productList.append(dic)
+        i+=1
 
         # print(productList)
-    createXsq(Cookie,productList)
+    from merchant_pc.getSectionList import getSectionList
+    sectionId=getSectionList(Cookie,sectionType)[0]
+    createXsq(Cookie,productList,sectionId)

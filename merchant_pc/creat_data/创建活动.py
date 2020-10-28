@@ -14,7 +14,7 @@ import random
 import datetime
 
 
-def createXsq(Cookie,productList,sectionId):
+def createXsq(Cookie, productList, sectionType, sectionId):  # sectionType 1-限时抢，2-秒杀
     # from merchant_pc.getCookie import getCookies  # cookie获取提取到方法外，调用该方法必须穿cookie
     # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
@@ -38,7 +38,8 @@ def createXsq(Cookie,productList,sectionId):
                    "limitType": 1, "limitNum": "", "previewTime": 0, "preTime": "",
                    "beginTime": beginTime, "endTime": endTime,
                    "productList": productList,
-                   "discountType": 0, "stockType": 0, "activityId": "", "activityType": 1, "sectionId": sectionId}
+                   "discountType": 0, "stockType": 0, "activityId": "", "activityType": sectionType,
+                   "sectionId": sectionId}
     urllib3.disable_warnings()
     data = requests.post('https://www.shop2cn.com/service/mgmt/api/marketing/createEditPromotion', json=requestData,
                          headers=headers,
@@ -50,19 +51,21 @@ def createXsq(Cookie,productList,sectionId):
 
 if __name__ == '__main__':
     from merchant_pc.getCookie import getCookies  # cookie获取提取到方法外，调用该方法必须穿cookie
+
     Cookie = getCookies()
     productList = []  # 定义一个空列表接收商品id和规格信息
     x = 0  # 计数器
     sellerid = 500002398  # 商户id，查询商品信息需要
-    sectionType=eval(input('你想创建限时抢还是秒杀，1-限时抢，2-秒杀：'))
+    sectionType = eval(input('你想创建限时抢还是秒杀，1-限时抢，2-秒杀：'))
     n = int(input('请输入你想添加的商品个数：'))
     discount = eval(input('请输入折扣：'))  # 设置折扣
     # 遍历商品列表，并在商品规格上添加活动库存信息
     from merchant_pc.getProduceList import getPorduceList  # 获取商品列表（创建活动时拉取的列表）
-    pageindex=5
-    i=1
-    while i<pageindex:
-        for item in getPorduceList(Cookie,i):  # 遍历商品列表
+
+    pageindex = 5
+    i = 1
+    while i < pageindex:
+        for item in getPorduceList(Cookie, i):  # 遍历商品列表
             productid = [item['id']]
             dic = {}  # 定义一个字典接收商品id和规格信息，将字典添加到列表中
             cateloglist = []  # 定义一个空规格列表，接收规格信息
@@ -82,9 +85,10 @@ if __name__ == '__main__':
                 if x > n:
                     break
                 productList.append(dic)
-        i+=1
+        i += 1
 
         # print(productList)
     from merchant_pc.getSectionList import getSectionList
-    sectionId=getSectionList(Cookie,sectionType)[0]
-    createXsq(Cookie,productList,sectionId)
+
+    sectionId = getSectionList(Cookie, sectionType)[0]['sectionId']
+    createXsq(Cookie, productList, sectionType, sectionId)

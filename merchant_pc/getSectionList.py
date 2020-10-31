@@ -1,12 +1,13 @@
-#author : comma
-#date : 2020/10/28 15:09
+# author : comma
+# date : 2020/10/28 15:09
 
 # https://www.shop2cn.com/service/mgmt/api/marketing/sectionList?pageIndex=1&pageSize=20&sectionType=1
 import requests
 import json
 import urllib3
 
-def getSectionList(Cookie,sectionType): # sectionType   1:限时抢，2：秒杀
+
+def getSectionList(Cookie, sectionType):  # sectionType   1:限时抢，2：秒杀
     # from merchant_pc.getCookie import getCookies  # cookie获取提取到方法外，调用该方法必须穿cookie
     # Cookie = getCookies()
     headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng, */*',
@@ -17,15 +18,18 @@ def getSectionList(Cookie,sectionType): # sectionType   1:限时抢，2：秒杀
                }
     '''设置请求数据'''
     urllib3.disable_warnings()
-    data = requests.get(f'https://www.shop2cn.com/service/mgmt/api/marketing/sectionList?pageIndex=1&pageSize=20&sectionType={sectionType}',
-                         headers=headers,
-                         verify=False)
+    data = requests.get(
+        f'https://www.shop2cn.com/service/mgmt/api/marketing/sectionList?pageIndex=1&pageSize=20&sectionType={sectionType}',
+        headers=headers,
+        verify=False)
     response = data.text
-    sectionList=json.loads(response)['data']['list']
-    #print(sectionList)
+    sectionList = json.loads(response)['data']['list']
+    # print(sectionList)
     return sectionList
+
 
 if __name__ == '__main__':
     from merchant_pc.getCookie import getCookies  # cookie获取提取到方法外，调用该方法必须穿cookie
+
     Cookie = getCookies()
-    getSectionList(Cookie,1)
+    getSectionList(Cookie, 1)

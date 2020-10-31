@@ -8,7 +8,7 @@ import json
 import openpyxl
 
 
-def getBrands(Cookie,i):
+def getBrands(Cookie, i):
     # from merchant_pc.getCookie import getCookies
     # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
@@ -23,25 +23,26 @@ def getBrands(Cookie,i):
     data = requests.get(url, headers=headers, verify=False)
     response = data.text
     bransList = json.loads(response)['data']['list']
-    #print(bransList)
+    # print(bransList)
     return bransList
 
 
 if __name__ == '__main__':
     from merchant_pc.getCookie import getCookies
+
     Cookie = getCookies()
 
-    wk=openpyxl.Workbook()
-    sheet=wk.create_sheet('品牌')
-    sheet.append(['名字','品牌id'])
+    wk = openpyxl.Workbook()
+    sheet = wk.create_sheet('品牌')
+    sheet.append(['名字', '品牌id'])
 
     for item in range(26):
-        brandList=getBrands(Cookie,chr(item+ord('A')))      # ord('a')将字母a转成数字
-        #print(brandList)
+        brandList = getBrands(Cookie, chr(item + ord('A')))  # ord('a')将字母a转成数字
+        # print(brandList)
         for brand in brandList:
-            if brandList !=None:
-                name=brand['name']
-                id=brand['id']
-                sheet.append([name,id])
+            if brandList != None:
+                name = brand['name']
+                id = brand['id']
+                sheet.append([name, id])
     wk.save('D:\python\study\品牌信息表.xlsx')
     print('品牌信息输出完成！')

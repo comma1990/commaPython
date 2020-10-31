@@ -6,6 +6,7 @@ import openpyxl
 if __name__ == '__main__':
     # 获取cookie
     from merchant_pc.getCookie import getCookies
+
     Cookie = getCookies()
 
     # 获取仓库名
@@ -53,12 +54,9 @@ if __name__ == '__main__':
     #             merchant_pc.createProduct.createProduct(Cookie, pic)
     #             x += 1
 
-
     # 创建优惠券
     # from merchant_pc.createCoupon import createCoupon
     # createCoupon(Cookie)
-
-
 
     # 获取商品列表
     # from merchant_pc.getProductId import getProductId

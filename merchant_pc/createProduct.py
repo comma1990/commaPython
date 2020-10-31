@@ -3,10 +3,13 @@ import urllib3
 import random
 
 '''创建商品'''
+
+
 #   getCookie方法提取到公共方法中，调用改方法必须先传cookie
 
 
-def createProduct(Cookie,pic):#商品图片["http://pic1.shop2cn.com/G03/M06/DF/E5/CgzUIV-FLdiAIgByAAENpCaDBHw074_1_1_n_x_o.jpg"]
+def createProduct(Cookie,
+                  pic):  # 商品图片["http://pic1.shop2cn.com/G03/M06/DF/E5/CgzUIV-FLdiAIgByAAENpCaDBHw074_1_1_n_x_o.jpg"]
     # from merchant_pc.getCookie import getCookies
     # Cookie = getCookies()
     headers = {'Accept': 'application/json, text/plain, */*',
@@ -17,9 +20,9 @@ def createProduct(Cookie,pic):#商品图片["http://pic1.shop2cn.com/G03/M06/DF/
                }
     x = random.randint(10, 50)
     from merchant_pc.getDepot import getDepot
-    depotId=getDepot(Cookie)
-   # loginId = 'gjgly' + str(x)
-    title = 'python商品' + str(x)+'号'
+    depotId = getDepot(Cookie)
+    # loginId = 'gjgly' + str(x)
+    title = 'python商品' + str(x) + '号'
     '''设置角色id——templateId'''
     requestData = {"saleType": 1, "source": "pc", "noReasonReturn": 1,
                    "currency": "CNY", "depotId": depotId, "subType": 1, "title": title, "subTitle": "副标题",

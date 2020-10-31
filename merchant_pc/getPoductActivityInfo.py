@@ -8,7 +8,7 @@ import urllib3
 import json
 
 
-def getPoductActivityInfo(sellerId,productId):  # productId ["p4740703", "p4740702", "p4706337", "p4740694"]
+def getPoductActivityInfo(sellerId, productId):  # productId ["p4740703", "p4740702", "p4706337", "p4740694"]
     '''设置请求数据'''
     requestdata = {
         "sellerId": sellerId,
@@ -20,12 +20,12 @@ def getPoductActivityInfo(sellerId,productId):  # productId ["p4740703", "p47407
                          verify=False)
     response = data.text
     acticityInfo = json.loads(response)['data']['productList']  # productlist为空的时候表明商品没有活动
-    #print(response)
+    # print(response)
     return acticityInfo
 
 
 if __name__ == '__main__':
-    productlist=['p5985269']
-    sellerid=500002398
-    result=getPoductActivityInfo(sellerid,productlist)
+    productlist = ['p5985269']
+    sellerid = 500002398
+    result = getPoductActivityInfo(sellerid, productlist)
     print(result)

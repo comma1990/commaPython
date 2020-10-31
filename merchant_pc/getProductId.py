@@ -11,7 +11,7 @@ import openpyxl
 def getProductId(Cookie):
     wk = openpyxl.Workbook()
     sheet = wk.create_sheet()
-    sheet.append(['productId','商品名称','品牌id','品牌名','分类id','分类','商品图片'])  # 添加表头（列名）
+    sheet.append(['productId', '商品名称', '品牌id', '品牌名', '分类id', '分类', '商品图片'])  # 添加表头（列名）
 
     # from merchant_pc.getCookie import getCookies
     # Cookie = getCookies()
@@ -28,20 +28,23 @@ def getProductId(Cookie):
                          headers=headers,
                          verify=False)
     response = json.loads(data.text)
-    productList=response['data']['productList']
-   # print(response)
-    for item in productList:    # 循环将数据添加到表中
-        productId=item['productId']
-        productName=item['title']
+    productList = response['data']['productList']
+    # print(response)
+    for item in productList:  # 循环将数据添加到表中
+        productId = item['productId']
+        productName = item['title']
         brandId = item['brandId']
-        brandName=item['brandName']
+        brandName = item['brandName']
         categoryId = item['categoryId']
         categoryName = item['categoryName']
-        pic=item['pics'][0]
-        sheet.append([productId,productName,brandId,brandName,categoryId,categoryName,pic])
+        pic = item['pics'][0]
+        sheet.append([productId, productName, brandId, brandName, categoryId, categoryName, pic])
     wk.save('D:\python\study\商品信息.xlsx')
     print('输出完毕！')
+
+
 if __name__ == '__main__':
     from merchant_pc.getCookie import getCookies
+
     Cookie = getCookies()
     getProductId(Cookie)

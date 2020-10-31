@@ -6,6 +6,7 @@ import requests
 import urllib3
 import json
 
+
 def createXsq():
     from merchant_pc.getCookie import getCookies  # cookie获取提取到方法外，调用该方法必须穿cookie
     Cookie = getCookies()
@@ -15,18 +16,19 @@ def createXsq():
                'Connection': 'keep - alive',
                'Cookie': Cookie
                }
-    from merchant_pc.getTime import getAddMinutesTime2,getAddDaysTime2,getAddDaysTime3,getAddMinutesTime3
-    beginTime=getAddMinutesTime3()
-    endTime=getAddDaysTime3()
-    promotionBeginTime=getAddMinutesTime2()
-    promotionTimeEndTime=getAddDaysTime2()
+    from merchant_pc.getTime import getAddMinutesTime2, getAddDaysTime2, getAddDaysTime3, getAddMinutesTime3
+    beginTime = getAddMinutesTime3()
+    endTime = getAddDaysTime3()
+    promotionBeginTime = getAddMinutesTime2()
+    promotionTimeEndTime = getAddDaysTime2()
 
     '''设置请求数据'''
     requestData = {"name": "py测试", "promotionTime": [promotionBeginTime, promotionTimeEndTime],
                    "limitType": 1, "limitNum": "", "previewTime": 0, "preTime": "",
                    "beginTime": beginTime, "endTime": endTime,
                    "productList": [{"productId": "p7084378", "catalogList":
-                       [{"catalogId": "c43699135", "buyingPrice": 0, "salePrice": 0.1, "stockNum": 100, "realStock": 100,
+                       [{"catalogId": "c43699135", "buyingPrice": 0, "salePrice": 0.1, "stockNum": 100,
+                         "realStock": 100,
                          "virtualStock": 0, "propertyValue": "白色", "sku": None, "barcode": None, "counterPrice": 0,
                          "marketAmount": 0, "activityRealStock": 0, "activityStock": 0, "discount": "5.6",
                          "discountPrice": "0.06"},
@@ -49,9 +51,10 @@ def createXsq():
                          headers=headers,
                          verify=False)
     response = data.text
-    #depotId = json.loads(response)['data']['depotList'][1]['depotId']
+    # depotId = json.loads(response)['data']['depotList'][1]['depotId']
     print(response)
     return response
+
 
 if __name__ == '__main__':
     createXsq()

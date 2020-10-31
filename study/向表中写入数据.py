@@ -1,17 +1,18 @@
-#author : comma
-#date : 2020/10/14 12:44
+# author : comma
+# date : 2020/10/14 12:44
 
-#将店铺的仓库id和名称保存到excel表中
+# 将店铺的仓库id和名称保存到excel表中
 
 import requests
 import urllib3
 import json
 import openpyxl
 
+
 def writeToExcel():
-    wk=openpyxl.Workbook()
-    sheet=wk.create_sheet()
-    sheet.append(['仓库id','仓库名','买家展示名','仓库图片'])
+    wk = openpyxl.Workbook()
+    sheet = wk.create_sheet()
+    sheet.append(['仓库id', '仓库名', '买家展示名', '仓库图片'])
 
     from merchant_pc.getCookie import getCookies
     Cookie = getCookies()
@@ -28,17 +29,18 @@ def writeToExcel():
                          headers=headers,
                          verify=False)
     response = data.text
-    depotList=json.loads(response)['data']['depotList']
+    depotList = json.loads(response)['data']['depotList']
     for item in depotList:
-        buyerName=item['buyerTitle']
-        depotTitle=item['depotTitle']
-        depotId=item['depotId']
-        picUrl=item['picUrl']
-        sheet.append([depotId,depotTitle,buyerName,picUrl])
-        wk.save('D:\python\study\仓库信息.xlsx')  #文件名重复的时候会报错，路径下文件删了重新执行就可以了
+        buyerName = item['buyerTitle']
+        depotTitle = item['depotTitle']
+        depotId = item['depotId']
+        picUrl = item['picUrl']
+        sheet.append([depotId, depotTitle, buyerName, picUrl])
+        wk.save('D:\python\study\仓库信息.xlsx')  # 文件名重复的时候会报错，路径下文件删了重新执行就可以了
 
-#depotId = json.loads(response)['data']['depotList'][1]['depotId']
+
+# depotId = json.loads(response)['data']['depotList'][1]['depotId']
 #
-#定义成方法后，必须要在方法外部调用才会执行！！！
+# 定义成方法后，必须要在方法外部调用才会执行！！！
 #
 writeToExcel()

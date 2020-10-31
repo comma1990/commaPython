@@ -10,11 +10,11 @@ def getCookies():
                    "password": "aLhnKT0fG+oQRwX2MG0HLeDB9DG2iYSes8VR4w36oPaSJYVfgFXxePzr0tlKfkXjildB2wIrDdDAZC/MBkr4IJ4zW2iacwAdN6Srv+UjtTKuRI6GzjRuf0WmHYUS/QcFD+4OJqOrQYkxWsR5awgDgCt9TyLQPHz0Bk84cwghuZA="}
 
     ###############这块是中免的请求参数###########################
-        # host='shop.cdfmembers.com'    # 中免host
-        # url = 'https://shop.cdfmembers.com/service/shop/api/accountlogin'  # 中免登录地址
-        # requestData = {"username": "...wx...13510237024",
-        #                "password": "ldsoyxyeCnktDi3HblKbuFrbpFVrjRpqnaR8c5Hpba9M5CzRqpG3Ex7Y+mcMveuAAMfayN2IMaUELY9FB5jCIcHsR6xUwyJUYxcCbs1Yjn+onr6P2HIcxLO1MHlv3d34ekMubCOBREnYPYOMsFlzKjE3w7HAewkzsYS6N1kmjng=",
-        #                "wxAppName": "pcsqSeller_500024716"}
+    # host='shop.cdfmembers.com'    # 中免host
+    # url = 'https://shop.cdfmembers.com/service/shop/api/accountlogin'  # 中免登录地址
+    # requestData = {"username": "...wx...13510237024",
+    #                "password": "ldsoyxyeCnktDi3HblKbuFrbpFVrjRpqnaR8c5Hpba9M5CzRqpG3Ex7Y+mcMveuAAMfayN2IMaUELY9FB5jCIcHsR6xUwyJUYxcCbs1Yjn+onr6P2HIcxLO1MHlv3d34ekMubCOBREnYPYOMsFlzKjE3w7HAewkzsYS6N1kmjng=",
+    #                "wxAppName": "pcsqSeller_500024716"}
     ######################################################
 
     headers = {'Accept': 'application/json, text/plain, */*',
@@ -26,7 +26,7 @@ def getCookies():
     cookie = ''
     for name, value in cookies:
         cookie += '{0}={1};'.format(name, value)
-    #print(cookie)
+    # print(cookie)
     return cookie
 
 

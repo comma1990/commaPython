@@ -31,6 +31,7 @@ def getCategories(Cookie):
 # 通过循环将分类信息打印到Excel表中
 if __name__ == '__main__':
     from merchant_pc.getCookie import getCookies
+
     Cookie = getCookies()
 
     wk = openpyxl.Workbook()

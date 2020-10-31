@@ -1,7 +1,7 @@
 # Author ： comma
 # 日期 : 2020/10/17  15:04
 
-# # 一键抠图
+# 一键抠图
 # from removebg import RemoveBg
 # import os
 #

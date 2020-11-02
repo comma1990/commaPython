@@ -45,3 +45,10 @@ print(s1 ^ s2)
 
 # 集合生成式
 print({i * i for i in range(10)})
+
+############### 元组的使用 #####
+tup = tuple(('python', '皮皮', 3333))  # tuple方法中要嵌套一层小括号
+t2 = (10,)  # 只包含一个元素的时候要使用逗号和小括号
+
+for item in tup:  # 元组的遍历
+    print(item)

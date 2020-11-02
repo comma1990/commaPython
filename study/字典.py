@@ -22,7 +22,6 @@ name = ['华晨宇', '田馥甄', '萧敬腾', '林宥嘉']
 match = {x: y for x, y in zip(nikename, name)}
 print(match)
 
-############### 元组的使用 ##### = tuple(('python', '皮皮', 3333))  # tuple方法中要嵌套一层小括号
-t2 = (10,)  # 只包含一个元素的时候要使用逗号和小括号
+
 
 

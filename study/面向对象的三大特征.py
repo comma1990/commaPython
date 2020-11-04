@@ -3,6 +3,7 @@
 
 
 '''
+dir(类名) 查看类的属性和方法
 面向对象的三大特征：
 封装：提高程序的安全性
      将数据（属性）和行为（方法）包装到类对象中。在方法内部对属性进行操作，在类对象外部调用方法。这样，无序关心方法内部的具体实现细节，从而隔离了复杂度。
@@ -45,8 +46,8 @@ stone = Stone('石头', 28, '男')  # 创建子类Stone的实例方法
 stone.show()  # 子类继承了父类的方法show()
 
 # 多继承
-class sun(Comma,Stone): # sun同时继承了Comma和Stone，继承这两个类的所有对象方法
-    pass
+#class sun(Comma,Stone): # sun同时继承了Comma和Stone，继承这两个类的所有对象方法
+ #   pass
 
 
 ############## 方法重写 ###############
@@ -54,3 +55,13 @@ class sun(Comma,Stone): # sun同时继承了Comma和Stone，继承这两个类�
 如果子类对继承自父类的某个属性或者方法不满意，可以在子类中对其（方法体）进行重新编写
 子类重写丰厚的方法中可以通过super().xxx()调用父类中被重新的方法
 """
+print(dir(Stone))   # 查看类的属性和方法
+
+print(stone.__dict__) # 查看实例对象的属性字典
+print(Comma.__dict__)  # 查看类中的方法字典
+print(stone.__class__) # 查看实例对象所属的类
+print(Stone.__bases__)  # 查看子类的父类，如果是多继承，都会展示，以元组的方式展示
+print(Stone.__mro__)    # 查看类的层级结构
+print(Comma.__subclasses__())   # 查看子类，以数组方式展示
+print('-------')
+

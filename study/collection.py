@@ -8,6 +8,9 @@
 # num = eval(x) + 1               # 注意：input函数输入的是字符串类型再用eval函数会报错
 # print(num)
 
+################### lambda表达式 #####################
+# ls=list(filter(lambda x:len(x)>3,['a','c','defg']))   # lambda表达的应用
+# print(ls)
 
 # 记录学习过程中常用的方法
 ############ random获取随机数 ##############

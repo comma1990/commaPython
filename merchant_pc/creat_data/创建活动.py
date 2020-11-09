@@ -14,6 +14,7 @@ import random
 import datetime
 
 
+
 def createXsq(Cookie, productList, sectionType, sectionId):  # sectionType 1-限时抢，2-秒杀
     # from merchant_pc.getCookie import getCookies  # cookie获取提取到方法外，调用该方法必须穿cookie
     # Cookie = getCookies()

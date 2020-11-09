@@ -3,6 +3,7 @@
 
 
 ###### eval方法的使用 ###########
+# eval() 函数用来执行一个字符串表达式，并返回表达式的值。——表达式需要是一个字符串，即引号引起来
 # x = input('请输入一个数字：')
 # print(type(x), type(eval(x)))   # eval()去掉字符串最外侧的引号，如input函数得到的数据类型是str，去掉外侧的引号，就变成输入数据本身的类型了
 # num = eval(x) + 1               # 注意：input函数输入的是字符串类型再用eval函数会报错
@@ -11,6 +12,13 @@
 ################### lambda表达式 #####################
 # ls=list(filter(lambda x:len(x)>3,['a','c','defg']))   # lambda表达的应用
 # print(ls)
+
+##############  enumerate() ###############
+# def hero(*name):
+#     for index,item in enumerate(name):  # enumerate() 用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标
+#         print(index+1,item)
+#
+# hero('逗号','二豆')
 
 # 记录学习过程中常用的方法
 ############ random获取随机数 ##############

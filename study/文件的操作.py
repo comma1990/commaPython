@@ -11,6 +11,11 @@ b ：以二进制方式打开文件，不能单独使用，需要和其它模式
 + ：以读写方式打开文件，不能单独使用，需要和其它模式一起使用，如：a+
 '''
 
+# 使用上下文管理器with来拷贝文件,不论什么原因跳出with语句体，都能确保文件的正确关闭
+with open('/Users/sun/Downloads/原图.png', 'rb') as src1_file:
+    with open('/Users/sun/Downloads/复制原图.png', 'wb') as target1_file:
+        target1_file.write(src1_file.read())
+
 file = open('/Users/sun/Desktop/文件写入测试.txt', 'w')  # w写入权限，会覆盖文件原有内容，没有文件会新建一个文件
 file.write('文件写入测试')
 file.close()

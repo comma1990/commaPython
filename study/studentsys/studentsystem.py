@@ -1,5 +1,8 @@
 # author : comma
 # date : 2020/11/9 15:09
+import os
+
+from study.字符串的操作 import lst
 
 filename = 'student.txt'
 
@@ -42,14 +45,13 @@ def menum():
     print('\t\t\t\t\t\t5.对学生信息排序')
     print('\t\t\t\t\t\t6.统计学生总人数')
     print('\t\t\t\t\t\t7.显示所有学生信息')
-    print('\t\t\t\t\t\t8.退出系统')
+    print('\t\t\t\t\t\t0.退出系统')
     print('----------------------------------------------')
 
 
 '''
 添加学生信息：
 1.定义一个学生列表接收学生信息，单个学生信息以字典方式储存
-
 '''
 
 
@@ -78,20 +80,33 @@ def insert():
             break
 
     # 调用save方法保存数据
-    save(student_lst)
+    save2(student_lst)
 
 
 def save(lst):
     try:
-        with open(filename, 'a', encoding='UTF-8') as stu_txt:
-            for item in lst:
-                stu_txt.write(item + '\n')
-
-
+        stu_txt = open(filename, 'a', encoding='UTF-8')
+        print('追加方式保存1')
     except:
-        with open(filename, 'w', encoding='UTF-8') as stu_txt:
-            for item in lst:
-                stu_txt.write(str(item).replace('{', '').replace('}', '') + '\n')
+        stu_txt = open(filename, 'w', encoding='UTF-8')
+        print('覆盖方式保存1')
+
+    for item in lst:
+        stu_txt.write(str(item) + '\n')
+    stu_txt.close()
+
+
+def save2(lst2):
+    try:
+        with open(filename, 'a', encoding='UTF-8') as stu_txt2:
+            for item in lst2:
+                stu_txt2.write(str(item) + '\n')
+        print('以追加方式添加')
+    except:
+        with open(filename, 'a', encoding='UTF-8') as stu_txt2:
+            for item in lst2:
+                stu_txt2.write(str(item) + '\n')
+        print('以覆盖方式添加')
 
 
 def search():
@@ -99,7 +114,37 @@ def search():
 
 
 def delete():
-    pass
+    while True:
+        student_id = input('请输入要删除的学生ID')
+        if student_id != '':
+            if os.path.exists(filename):
+                with open(filename, 'r', encoding='utf-8') as file:
+                    student_old = file.readlines()  # 读取文件到列表中
+            else:
+                student_old = []  # 如果文件为空，则给列表赋一个空值
+            flag = False
+            if student_old:
+                with open(filename, 'w', encoding='utf-8') as wfile:
+                    d = {}
+                    for item in student_old:
+                        d = dict(eval(item))
+                        if d['id'] != student_id:  # 判断这个元素的id和要删除的id是否一样，不一样就继续存储到文件中，不一样的时候flag标记为True，不写入文件（即：删除）
+                            wfile.write(str(d) + '\n')
+                        else:
+                            flag = True
+                    if flag:
+                        print(f'id为{student_id}的学生信息已被删除')
+                    else:
+                        print(f'没有找到id为{student_id}的学生')
+        else:
+            print('无学生信息')
+            break
+        show()
+        answer = input('是否继续删除？y/n')
+        if answer == 'y':
+            continue
+        else:
+            break
 
 
 def sort():

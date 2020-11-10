@@ -13,6 +13,7 @@ print(score.keys())  # 获取所有的键
 print(score.values())  # 获取所有的值
 print(list(score.values()))  # 将获取的值转换成列表，键也同样操作
 print(score.items())  # 获取所有的元素
+print('--------------')
 print(list(score.items()))  # 将获取的键值对转换成元组
 for item in score:
     print(item, score[item], score.get(item))  # 字典的遍历，循环获取的是减值，score[key]获取值的时候，如果key不在字典中会报错，get方法则会返回None

@@ -152,7 +152,36 @@ def sort():
 
 
 def update():
-    pass
+    show()
+    if os.path.exists(filename):
+        with open(filename,'r',encoding='utf-8') as rfile:
+            student_old=rfile.readlines()
+    else:
+        return
+    student_id=input('请输入学生id：')
+    with open(filename,'w',encoding='utf-8') as wfile:
+        for item in student_old:
+            d=dict(eval(item))
+            if d['id']==student_id:
+                print('找到学生信息了，可以修改！')
+                while True:
+                    try:
+                        d['name']=input('请输入学生姓名：')
+                        d['english']=input('请输入英语成绩：')
+                        d['java']=input('请输入java成绩：')
+                        d['python']=input('请输入python成绩：')
+                    except:
+                        print('输入信息有误，请重新输入！！！')
+                    else:
+                        break
+                wfile.write(str(d)+'\n')
+                print('信息修改成功！')
+            else:
+                wfile.write(str(d)+'\n')
+    answer=input('是否继续修改其它学生信息？y/n:')
+    if answer=='y':
+        update()
+
 
 
 def total():

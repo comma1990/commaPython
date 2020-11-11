@@ -7,7 +7,7 @@ def getCookies():
     host = 'www.shop2cn.com'
     url = 'https://www.shop2cn.com/service/shop/api/accountlogin'  # 公版登录地址
     requestData = {"username": "18862396927",
-                   "password": "aLhnKT0fG+oQRwX2MG0HLeDB9DG2iYSes8VR4w36oPaSJYVfgFXxePzr0tlKfkXjildB2wIrDdDAZC/MBkr4IJ4zW2iacwAdN6Srv+UjtTKuRI6GzjRuf0WmHYUS/QcFD+4OJqOrQYkxWsR5awgDgCt9TyLQPHz0Bk84cwghuZA="}
+                   "password": "q41ZxiimH+QTNSkdwYc1ybbNMo7c/vbuU+L2iRhEtTe1C+MyWk6XfDkCuPgj5JgoTIB4Cxmn/G2ECfbRyuxFN9mLllnUr0P7Lj2m4otCxyJ6ElGQx4vtQl+Uqb44zwP5wz6Ng7PUFFBEtDVyGvo6t3N4lTuWH/NN4C6xYKWsoNE="}
 
     ###############这块是中免的请求参数###########################
     # host='shop.cdfmembers.com'    # 中免host

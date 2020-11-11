@@ -190,7 +190,33 @@ def delete():
 
 
 def sort():
-    pass
+    if os.path.exists(filename):
+        stulist = []
+        with open(filename, 'r', encoding='utf-8') as rfile:
+            students = rfile.readlines()
+            for item in students:
+                d = dict(eval(item))
+                stulist.append(d)
+        asc_or_desc = input('请选择（0.升序，1.降序）')
+        if asc_or_desc == '0':
+            asc_or_desc = False
+        elif asc_or_desc == '1':
+            asc_or_desc = True
+        else:
+            print('输入有误，请重新输入')
+            sort()
+        mode = input('请选择排序方式：1-按英语成绩排序，2-按python成绩排序，3-按Java成绩排序，0-按总成绩排序')
+        if mode == '1':
+            stulist.sort(key=lambda x: int(x['english']), reverse=asc_or_desc)
+        elif mode == '2':
+            stulist.sort(key=lambda x: int(x['python']), reverse=asc_or_desc)
+        elif mode == '3':
+            stulist.sort(key=lambda x: int(x['java']), reverse=asc_or_desc)
+        else:
+            stulist.sort(key=lambda x:int(x['english'])+int(x['python'])+int(x['java']),reverse=asc_or_desc)
+        show_student(stulist)
+    else:
+        print('暂未保存文件')
 
 
 def update():
@@ -226,11 +252,31 @@ def update():
 
 
 def total():
-    pass
+    if os.path.exists(filename):
+        with open(filename, 'r', encoding='utf-8') as rfile:
+            students = rfile.readlines()
+            if students:
+                print(f'一共有名{len(students)}学生')
+            else:
+                print('还未录入学生信息')
+    else:
+        print('暂未保存数据信息')
 
 
 def show():
-    pass
+    if os.path.exists(filename):
+        stulist = []
+        with open(filename, 'r', encoding='utf-8') as rfile:
+            students = rfile.readlines()
+            for item in students:
+                d = dict(eval(item))
+                stulist.append(d)
+        if stulist:
+            show_student(stulist)
+        else:
+            print('您还未录入学生信息')
+    else:
+        print('暂未保存数据信息')
 
 
 if __name__ == '__main__':

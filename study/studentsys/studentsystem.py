@@ -213,7 +213,7 @@ def sort():
         elif mode == '3':
             stulist.sort(key=lambda x: int(x['java']), reverse=asc_or_desc)
         else:
-            stulist.sort(key=lambda x:int(x['english'])+int(x['python'])+int(x['java']),reverse=asc_or_desc)
+            stulist.sort(key=lambda x: int(x['english']) + int(x['python']) + int(x['java']), reverse=asc_or_desc)
         show_student(stulist)
     else:
         print('暂未保存文件')

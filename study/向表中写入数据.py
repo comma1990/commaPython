@@ -7,6 +7,7 @@ import requests
 import urllib3
 import json
 import openpyxl
+import pandas
 
 
 def writeToExcel():

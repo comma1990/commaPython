@@ -1,0 +1,10 @@
+有些网站设置了反爬虫处理，我们需要修改请求头来迷惑服务器的识别
+一、修改user-agent：里面存储的是系统和浏览器的型号版本
+二、修改referer：告诉服务器你是通过那个网址点进来的，而不是凭空出现的
+三、带上cookie
+
+当请求次数过多过快也会被识别，所以需要动态更换请求头
+    安装fake_useragent模块
+    from fake_useragent import UserAgent
+    ua=UserAgent(verify_ssl=False)
+    print(ua.chrome)

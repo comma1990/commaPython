@@ -1,0 +1,25 @@
+HTTP协议：
+    全称HyperText Transfer Protocal，超文本传输协议，是一种发布和接收HTML（Hyper Text Markuup Language）页面的方法，服务器端口是80
+
+HTTPS协议：
+    全称Hyper Text Transfer Protocol over SecureSocket Layer，是http的加密版本，在HTTP下加入了SSL层，服务端口是443
+
+URL和URI
+URL：（简称网址）是Uriform Resource Locator的简写，统一资源定位符。一个URL由以下几部分组成：
+    ①协议的类型（http，https）
+    ②主机名称/域名
+    ③端口号
+    ④查找路径
+    ⑤查询参数
+    ⑥锚点，前端用来做页面定位的。在一些前后端分离的项目，也用锚点来做导航
+        前端定位：https://baike.baidu.com/item/%E8%83%A1%E6%AD%8C/312718?fr=aladdin#3_3  #后面的就是锚点，用来定位页面的位置
+        锚点导航    动的是#后面的内容，根据锚点去请求数据 https://music.163.com/#/friend 这个是根据锚点来判断tab
+URI：统一资源标识符Uniform Resource Identifier，是一个用于标识某一互联网资源名称的字符串
+
+Session与Cookie：
+Session：代表服务器与浏览器的一次会话过程。是一种服务器端的机制，Session对象用来存储特定用户会话所需的信息，它是由服务器端生成的，保存
+         在服务器的内存，缓存，硬盘或者数据库中。
+    原理：客户端发送登录请求，服务器端创建Session对象，会生成一个Sessionid，通过响应cookie返回到浏览器（客户端）保存，
+         给客户端发送的只是id，之后浏览器发送的请求携带Sessionid，服务器端校验这个Sessionid是否是可以登录的用户
+
+Cookie：是由服务器端生成后发送给客户端（通常是浏览器），cookie总是保存在客户端

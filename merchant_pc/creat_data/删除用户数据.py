@@ -18,7 +18,7 @@ def delete(userid):
     requestData = {
         "userId": userid,
         "userType": 0,
-        "nickName": "测试33"
+        "nickName": "伊蓝"
     }
     url='http://dguser.iapi.ymatou.com/user/deleteUserSelf'
     data=requests.post(url=url,json=requestData,headers=headers,verify=False)

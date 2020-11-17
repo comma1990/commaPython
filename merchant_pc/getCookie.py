@@ -26,7 +26,7 @@ def getCookies():
     cookie = ''
     for name, value in cookies:
         cookie += '{0}={1};'.format(name, value)
-    # print(cookie)
+    print(cookie)
     return cookie
 
 

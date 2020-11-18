@@ -2,10 +2,28 @@
 # date : 2020/11/18 10:06
 
 '''
-//div[@class="book-mid-info"]/h4/a/text()---------小说名
-//div/p[@class="author"]/a[1]---------作者
-https://www.qidian.com/rank/yuepiao
+使用xpath选取节点
+nodename : 选取此节点的所有子节点
+/   : 从根节点选择
+//  : 从匹配选择的当前节点选择文档中的节点，而不考虑他们的位置
+.   : 选取当前节点
+..  : 选取当前节点的父节点
+/text() : 获取当前路径下的文本内容
+/@xxx   : 提取当前路径下标签的属性值
+|可选符  : 可选取若干个路径//p|//div,在当前路径下选取所有符合条件的p标签和div标签
+
+表达式：
+xpath('/body/div[1]')   : 选取body下的第一个div节点
+xpath('/body/div[last()]')    : 选取body下最后一个div节点
+xpath('/baody/div[last()-1]')   :选取body下倒数第二个div节点
+xpath('/body/div[postition()<3]')   : 选取body下前两个div节点
+xpath('/body/div[@class]')  : 选取body下带有class属性的div节点
+xpath('/body/div[@calss="main"]')   : 选取body下class属性为main的div节点
+xpath('/body/div[price>35.00]') : 选取body下price元素大于35的div节点
+
 '''
+# //div[@class="book-mid-info"]/h4/a/text() ----获取小说名称
+# //p[@class="author"]/a[1]/text() -------获取作者名字
 import requests
 import lxml.etree
 

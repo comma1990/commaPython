@@ -23,7 +23,7 @@ response对象的常用属性：
 '''
 import requests
 import urllib3
-
+import lxml
 urllib3.disable_warnings()
 
 # url = 'http://www.baidu.com'

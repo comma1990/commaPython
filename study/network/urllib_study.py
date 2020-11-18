@@ -22,14 +22,14 @@ import urllib.parse
 import urllib.request
 
 ssl._create_default_https_context=ssl._create_unverified_context
-# import urllib3.request
-#
-# kw = {'wd': '逗号'}
-# # 编码
-# result = urllib.parse.urlencode(kw)
-# print(result)
-# # 解码
-# print(urllib.parse.unquote(result))
+import urllib3.request
+
+kw = {'wd': '逗号'}
+# 编码
+result = urllib.parse.urlencode(kw)
+print(result)
+# 解码
+print(urllib.parse.unquote(result))
 
 # print('--------------------------------')
 
@@ -53,10 +53,10 @@ ssl._create_default_https_context=ssl._create_unverified_context
 # print(rest)
 
 ############## 设置访问代理 ##################
-from urllib.request import build_opener
-from urllib.request import ProxyHandler
-proxy=ProxyHandler({'https':'121.226.188.19:9999'}) # 设置访问代理
-opener=build_opener(proxy)  # urlopen是重写了build_opener方法，这里我们自己直接调用build_opener方法
-url='https://www.xslwx.com/'
-rep=opener.open(url)
-print(rep.read().decode('utf-8'))
+# from urllib.request import build_opener
+# from urllib.request import ProxyHandler
+# proxy=ProxyHandler({'https':'121.226.188.19:9999'}) # 设置访问代理
+# opener=build_opener(proxy)  # urlopen是重写了build_opener方法，这里我们自己直接调用build_opener方法
+# url='https://www.xslwx.com/'
+# rep=opener.open(url)
+# print(rep.read().decode('utf-8'))

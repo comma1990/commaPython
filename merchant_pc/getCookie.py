@@ -9,13 +9,7 @@ def getCookies():
     requestData = {"username": "18862396927",
                    "password": "q41ZxiimH+QTNSkdwYc1ybbNMo7c/vbuU+L2iRhEtTe1C+MyWk6XfDkCuPgj5JgoTIB4Cxmn/G2ECfbRyuxFN9mLllnUr0P7Lj2m4otCxyJ6ElGQx4vtQl+Uqb44zwP5wz6Ng7PUFFBEtDVyGvo6t3N4lTuWH/NN4C6xYKWsoNE="}
 
-    ###############这块是中免的请求参数###########################
-    # host='shop.cdfmembers.com'    # 中免host
-    # url = 'https://shop.cdfmembers.com/service/shop/api/accountlogin'  # 中免登录地址
-    # requestData = {"username": "...wx...13510237024",
-    #                "password": "ldsoyxyeCnktDi3HblKbuFrbpFVrjRpqnaR8c5Hpba9M5CzRqpG3Ex7Y+mcMveuAAMfayN2IMaUELY9FB5jCIcHsR6xUwyJUYxcCbs1Yjn+onr6P2HIcxLO1MHlv3d34ekMubCOBREnYPYOMsFlzKjE3w7HAewkzsYS6N1kmjng=",
-    #                "wxAppName": "pcsqSeller_500024716"}
-    ######################################################
+
 
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',

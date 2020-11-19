@@ -91,3 +91,5 @@ print(bs.select('div.info>span'))
 #获取值
 for item in bs.select('div.info>span'):
     print(item.text)
+
+

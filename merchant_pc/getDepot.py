@@ -24,3 +24,7 @@ def getDepot(Cookie):
     depotId = json.loads(response)['data']['depotList'][1]['depotId']
     # print('仓库编号：'+depotId)
     return depotId
+
+if __name__ == '__main__':
+    from merchant_pc import getCookie
+    print(getDepot(getCookie.getCookies()))

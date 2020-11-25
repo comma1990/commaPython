@@ -14,7 +14,6 @@ import random
 import datetime
 
 
-
 def createXsq(Cookie, productList, sectionType, sectionId):  # sectionType 1-限时抢，2-秒杀
     # from merchant_pc.getCookie import getCookies  # cookie获取提取到方法外，调用该方法必须穿cookie
     # Cookie = getCookies()
@@ -24,11 +23,11 @@ def createXsq(Cookie, productList, sectionType, sectionId):  # sectionType 1-限
                'Connection': 'keep - alive',
                'Cookie': Cookie
                }
-    from merchant_pc.getTime import getAddMinutesTime2, getAddDaysTime2, getAddDaysTime3, getAddMinutesTime3
-    beginTime = getAddMinutesTime3()
-    endTime = getAddDaysTime3()
-    promotionBeginTime = getAddMinutesTime2()
-    promotionTimeEndTime = getAddDaysTime2()
+    from merchant_pc.getTime import getAddMinutesTime2, getAddDaysTime2, getAddMinutesTime, getAddMinutesTime3,getAdd2MinutesTime
+    beginTime = getAddMinutesTime()
+    endTime = getAdd2MinutesTime()
+    promotionBeginTime = getAddMinutesTime()
+    promotionTimeEndTime = getAdd2MinutesTime()
 
     '''设置请求数据
     限时抢：activityType=1，sectionId=4
@@ -56,7 +55,8 @@ if __name__ == '__main__':
     Cookie = getCookies()
     productList = []  # 定义一个空列表接收商品id和规格信息
     x = 0  # 计数器
-    sellerid = 500002398  # 商户id，查询商品信息需要
+    sellerid = eval(input('请输入商户id：'))  # 商户id，查询商品信息需要   500002398，500041475   国内渠道商：500021576
+    # print('请先确认sellerID是否正确！！！筛选商品需要用到')
     sectionType = eval(input('你想创建限时抢还是秒杀，1-限时抢，2-秒杀：'))
     n = int(input('请输入你想添加的商品个数：'))
     discount = eval(input('请输入折扣：'))  # 设置折扣

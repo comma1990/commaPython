@@ -8,6 +8,13 @@ import datetime
 # 当前时间+n分钟
 def getAddMinutesTime():
     data = datetime.datetime.now()
+    offset = datetime.timedelta(minutes=1)
+    result = (data + offset).strftime('%Y-%m-%dT%H:%M:%S')
+    return result
+
+
+def getAdd2MinutesTime():
+    data = datetime.datetime.now()
     offset = datetime.timedelta(minutes=2)
     result = (data + offset).strftime('%Y-%m-%dT%H:%M:%S')
     return result
@@ -52,7 +59,7 @@ def getAddDaysTime3():
 
 def getAddMinutesTime3():
     data = datetime.datetime.now()
-    offset = datetime.timedelta(minutes=2)
+    offset = datetime.timedelta(minutes=30)
     result = (data + offset).strftime('%Y-%m-%d %H:%M:%S')
     return result
 

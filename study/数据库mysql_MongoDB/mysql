@@ -1,0 +1,39 @@
+创建表：
+    CREATE TABLE student(
+        id INT(10) PRIMARY KEY auto_increment,
+        name VARCHAR(8),
+        sex CHAR(1),
+        score FLOAT(6,2)
+    )
+修改表结构：
+    1.添加列
+    ALTER TABLE student ADD python FLOAT
+    ALTER TABLE student ADD email VARCHAR(20)
+    2.修改列属性
+    ALTER TABLE student MODIFY email VARCHAR(50)
+    3.修改列名
+    ALTER TABLE student CHANGE python Python FLOAT(6,2)
+    4.修改表编码格式
+    ALTER TABLE student DEFAULT CHARACTER SET utf8
+    5.修改列编码格式
+    ALTER TABLE student CHANGE name name VARCHAR(50) CHARACTER set utf8
+    6.删除列
+    ALTER TABLE student DROP Python
+
+修改表数据：
+    1.添加数据
+    INSERT INTO student (name ,sex)	VALUES('二豆','女')
+    2.修改数据
+    UPDATE student SET email='12345@qq.com' WHERE `name`='二豆'
+    3.删除数据
+    DELETE FROM student WHERE `name`='comma'
+
+查询：
+    select...from 表名[where]...[group by]...[having]...[order by ...asc/desc]
+    模糊查询：like   _ 匹配一个字符     % 匹配一个或多个字符
+    分组函数：
+    count()    sum()   avg()   max()   min()
+    1.统计UserId出现的次数
+    SELECT UserId ,COUNT(1) FROM `member` WHERE NickName='hahaha' GROUP BY UserId
+
+SELECT * from student

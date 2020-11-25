@@ -31,9 +31,19 @@
 查询：
     select...from 表名[where]...[group by]...[having]...[order by ...asc/desc]
     模糊查询：like   _ 匹配一个字符     % 匹配一个或多个字符
+    区间范围：between...and...
+    给定的只中进行选择：in
     分组函数：
     count()    sum()   avg()   max()   min()
-    1.统计UserId出现的次数
+    1.统计昵称为'hahaha'的用户UserId的数量
     SELECT UserId ,COUNT(1) FROM `member` WHERE NickName='hahaha' GROUP BY UserId
+    2.查询会员数大于20的店铺，having只能和 group by 一起使用
+    SELECT ShopId, COUNT(*)	FROM member GROUP BY ShopId HAVING COUNT(*)>20
+
+    多表连接查询：
+    内连接：
+        select...from 表1 inner join 表2 on 连接条件 ...[where]...
+    外连接：
+        select...from 表1 left/right join 表2 on 连接条件...[where]...
 
 SELECT * from student

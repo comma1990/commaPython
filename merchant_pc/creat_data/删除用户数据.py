@@ -1,7 +1,10 @@
 #-*- coding:utf-8 -*-
 # author : comma
 # date : 2020/11/12 9:57
-
+'''
+    1.统计昵称为'hahaha'的用户UserId的数量
+    SELECT UserId ,COUNT(1) FROM `member` WHERE NickName='hahaha' GROUP BY UserId
+'''
 import os
 import getCookie
 import requests

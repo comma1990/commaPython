@@ -25,9 +25,9 @@ def createXsq(Cookie, productList, sectionType, sectionId):  # sectionType 1-限
                }
     from merchant_pc.getTime import getAddMinutesTime2, getAddDaysTime2, getAddMinutesTime, getAddMinutesTime3,getAdd2MinutesTime
     beginTime = getAddMinutesTime()
-    endTime = getAdd2MinutesTime()
+    endTime = getAddDaysTime2()
     promotionBeginTime = getAddMinutesTime()
-    promotionTimeEndTime = getAdd2MinutesTime()
+    promotionTimeEndTime = getAddDaysTime2()
 
     '''设置请求数据
     限时抢：activityType=1，sectionId=4

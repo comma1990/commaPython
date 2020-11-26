@@ -1,0 +1,14 @@
+create table db_lianjia(
+    id int(4) primary key auto_increment,
+    title varchar(255) COMMENT '房屋挂牌名称',
+    houseInfo varchar(255) COMMENT '房屋描述',
+    positionInfo varchar(255) comment '楼层及建造年份',
+    dealDate varchar(255) comment '成交时间',
+    totalPrice varchar(255) comment '总价',
+    unitPrice varchar(255) comment '均价_元/平',
+    dealHouseTxt varchar(255) comment '卖点，进地铁/满五/满二',
+    Listing_price varchar(255) comment '挂牌价',
+    deal_cycle varchar(255) comment '成交周期',
+    agent_name varchar(255) comment '经纪人'
+
+)

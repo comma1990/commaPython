@@ -19,6 +19,8 @@
     ALTER TABLE student CHANGE name name VARCHAR(50) CHARACTER set utf8
     6.删除列
     ALTER TABLE student DROP Python
+    7.删除表
+    drop table student
 
 修改表数据：
     1.添加数据
@@ -45,5 +47,7 @@
         select...from 表1 inner join 表2 on 连接条件 ...[where]...
     外连接：
         select...from 表1 left/right join 表2 on 连接条件...[where]...
+
+
 
 SELECT * from student

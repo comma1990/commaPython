@@ -8,7 +8,7 @@ import urllib3
 
 
 class LianJiaSpider():
-    mydb = mysql.connector.connect(host='localhost', user='root', passwd='root', database='comma',
+    mydb = mysql.connector.connect(host='localhost', user='root', passwd='sun123456', database='comma',
                                    auth_plugin='mysql_native_password')
     mycursor = mydb.cursor()
 

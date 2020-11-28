@@ -6,7 +6,7 @@ import mysql.connector
 
 # 创建连接
 def insert():
-    connector = mysql.connector.connect(host='localhost', user='root', passwd='root', database='comma',
+    connector = mysql.connector.connect(host='localhost', user='root', passwd='sun123456', database='comma',
                                         auth_plugin='mysql_native_password')
     # print(connector)
     mycursor = connector.cursor()
@@ -30,7 +30,7 @@ def update():
     connector = mysql.connector.connect(host='127.0.0.1', port=3306, user='root', passwd='root', database='comma',
                                         auth_plugin='mysql_native_password')
     mycursor = connector.cursor()
-    sql = 'update student set name="黄月" where name="黄月英"'
+    sql = 'update student set name="渣渣" where name="黄月英"'
     mycursor.execute(sql)
     connector.commit()
     print('更新了', mycursor.rowcount, '条数据')

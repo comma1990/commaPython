@@ -1,0 +1,106 @@
+MongoDB最基本命令：
+    show databases：查看已有数据库
+    use dataname：选择数据库
+    show tables：查看已有表（集合）
+    show collections：查看已有表（集合）
+    db.createCollection('表名')：建表（集合）
+    db.集合名.drop():删除集合
+    db.dropDatabases():删除库
+
+MongoDB的增删改查：
+    db.集合名.insert(document):数据的添加
+    db.集合名.save(document):如果数据存在就更新，不存在就添加
+    db.集合名.update(query,update,multi):query：查询条件，类似SQL语句update中的where部分
+                                        update：更新操作符，类似SQL语句update中的set部分
+                                        multi：可选，默认false，标识只更新找到的第一条记录，值为true时表示把满足条件的文档全部更新
+    db.集合名.remove(query):删除数据，query为删除条件
+
+    数据插入insert/save：
+        方式1：db.student.insert({'_id':1001,'name':'少司命'});
+        js方式：for(i=20;i<25;i++){db.student.insert({'name':'卫庄','age':i})};
+
+        save方式：
+        db.student.save({'_id':1001,'name':'大司命'});
+    数据修改/更新 update：
+        1、更新一条数据，执行的是全文档更新，如果要保留参数，需要在更新的数据中重新写一遍
+            db.student.update({'name':'盖聂'}, {'name':'韩信','age':25,'sex':'男'});
+        2.修改指定的值：
+            db.student.update({'name':'少羽'}, {$set:{'age':20}});
+        3.修改所有name值为卫庄的数据
+            db.student.update({'name':'卫庄'}, {$set:{'name':'蒙恬'}}, {'multi':true});
+    数据删除：
+        1、删除_id为1001的数据
+            db.student.remove({'_id':1001});
+        2.多条数据符合条件的数据，只删除第一条
+            db.student.remove({'name':'卫庄'}, {'justOne':true});
+        3.删除表中所有数据
+            db.student.remove({});
+
+    查询数据：
+        a:查询所有数据
+            db.student.find();
+        b:查询匹配数据
+            db.student.find({'name':'天明'});
+        c:只返回匹配的第一条数据
+            db.student.findOne({'name':'卫庄'});
+        d:等值查询 $eq:
+            db.student.find({'age':{'$eq':30}});
+        e:查询年龄小于30的数据 $lt(小于等于：$lte):
+            db.student.find({'age':{'$lt':30}});
+        f:查询年龄大于30的数据 $gt(大于等于：$gte)
+            db.student.find({'age':{'$gt':30}});
+        g:查询年龄不等于25的数据 $ne:
+            db.student.find({'age':{'$ne':30}});
+        h:查询年龄是20，23，25岁的数据 $in:
+            db.student.find({'age':{'$in':[20,23,25]}});//只匹配中括号中给定的值，不表示范围
+        i:查询年龄不是20，23，25的数据 #nin:
+            db.student.find({'age':{'$nin':[20,23,25]}});
+        j:查询name是天明，或者年龄是25的学生：
+            db.student.find({'$or':[{'name':'天明'},{'age':30}]});
+    复杂查询：
+        1.查询name中包含'明'的数据
+            db.student.find({'name':/明/});
+            db.student.find({'name':{$regex:'明'}}); // 正则
+        2.js写法，查询年龄大于23的数据
+            db.student.find({$where:function(){return this.age>23}});
+        3.查询前两条数据 limit() :
+            db.student.find().limit(2)
+        4.跳过前三条数据，查询前面两条数据（即：查询第四第五条数据）：
+            db.student.find().limit(2).skip(3);
+        5.按年龄升序排序 sort() :
+            db.student.find().sort({'age':1})   //1.升序，-1.降序
+        6.统计姓名叫'卫庄'的数据总数 count() ：
+            db.student.find({'name':'卫庄'}).count()
+        7.去重，distinct，查出的是总数，没有具体信息：
+            db.student.distinct('age');
+        8.查询有性别的学生 exists：
+            db.student.find({'sex':{$exists:true}});    //true：存在，false：不存在
+
+
+
+
+
+
+
+案例：
+    1.创建文档
+        use comma;
+        db.createCollection('student');
+    2.查找：
+        db.getCollection('student').find();
+
+
+
+
+
+MongoDB常用数据类型：
+    Object ID:文档id
+    String：字符串，最常用，必须是有效的UTF-8
+    Boolean：存储一个布尔值，true或者false
+    Integer：整数可以是32位或者64位，取决于服务器
+    Double：存储浮点值
+    Arrays:数组或列表，多个值存储到一个键
+    Object:用于嵌入式的文档，即一个值为一个文档
+    Null：存储Null值
+    Timestamp:时间戳
+    Date:存储当前日期或时间的UNIX时间格式

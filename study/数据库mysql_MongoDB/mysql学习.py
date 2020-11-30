@@ -6,7 +6,7 @@ import mysql.connector
 
 # 创建连接
 def insert():
-    connector = mysql.connector.connect(host='localhost', user='root', passwd='sun123456', database='comma',
+    connector = mysql.connector.connect(host='localhost', user='root', passwd='root', database='comma',
                                         auth_plugin='mysql_native_password')
     # print(connector)
     mycursor = connector.cursor()
@@ -18,7 +18,7 @@ def insert():
     # mycursor.execute(sql, value)  # 单行数据执行
 
     ############ 批量数据插入 ##################
-    values = [('憨憨', 85, '女'), ('渣渣', 58, '女'), ('喵喵', 79, '男')]
+    values = [('狗蛋', 85, '女'), ('二蛋', 58, '女'), ('三傻', 79, '男')]
     mycursor.executemany(sql, values)
 
     # 提交
@@ -47,6 +47,6 @@ def delete():
 
 
 if __name__ == '__main__':
-    # insert()
-    update()
+    insert()
+    # update()
     # delete()

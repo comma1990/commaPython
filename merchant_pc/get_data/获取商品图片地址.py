@@ -38,7 +38,7 @@ class getproductspic():
         print('共插入了', cursor.rowcount, '条数据')
 
     def start(self):
-        for i in range(3):
+        for i in range(4,10):
             self.send_request(i)
 
 

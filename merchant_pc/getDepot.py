@@ -21,10 +21,15 @@ def getDepot(Cookie):
                          headers=headers,
                          verify=False)
     response = data.text
-    depotId = json.loads(response)['data']['depotList'][1]['depotId']
-    # print('仓库编号：'+depotId)
-    return depotId
+    if json.loads(response)['data']['total'] > 0:
+        depotId = json.loads(response)['data']['depotList'][1]['depotId']
+        # print('仓库编号：'+depotId)
+        return depotId
+    else:
+        return json.loads(response)['data']['total']    # 返回仓库总数：0
+
 
 if __name__ == '__main__':
     from merchant_pc import getCookie
+
     print(getDepot(getCookie.getCookies()))

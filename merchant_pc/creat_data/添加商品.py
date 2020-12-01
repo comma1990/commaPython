@@ -1,40 +1,33 @@
+#author : comma
+#date : 2020/12/1 10:49
 import requests
 import urllib3
 import random
-import xlrd
+import mysql.connector
 
-'''创建商品'''
-
-
-#   getCookie方法提取到公共方法中，调用改方法必须先传cookie
-
-
-def createProduct(Cookie,
-                  pic):  # 商品图片["http://pic1.shop2cn.com/G03/M06/DF/E5/CgzUIV-FLdiAIgByAAENpCaDBHw074_1_1_n_x_o.jpg"]
-    # from merchant_pc.getCookie import getCookies
-    # Cookie = getCookies()
+def createProduct(Cookie,pic):  # pic的类型需要是一个列表
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
-               'Host': 'www.shop2cn.com',
-               'Connection': 'keep - alive',
-               'Cookie': Cookie
+               'Cookie':Cookie
                }
-    x = random.randint(10, 50)
-    m = random.randint(10, 30)
-    n = random.randint(30, 50)
+    x = random.randint(10, 50)  # 商品名称定义
+    m = random.randint(10, 30)  # 规格1价格
+    n = random.randint(30, 50)  # 规格2价格
     from merchant_pc.getDepot import getDepot
-    depotId = getDepot(Cookie)  # 获取仓库信息
-    from get_data import getcategories
-    category=list(getcategories.getcategories(Cookie))
-    categoryId=category[0]
-    thirdCategoryId=category[2]
-    title = 'python商品' + str(x) + '号'
+    depotId = getDepot(Cookie)  #获取仓库
+
+    from get_data import getcategories  # 随机获取分类
+    category = list(getcategories.getcategories(Cookie))
+    categoryId = category[0]
+    thirdCategoryId = category[2]
+
+    title = '蜡笔小新' + str(x) + '号'
     '''设置角色id——templateId'''
-    requestData = {"saleType": 1, "source": "pc", "noReasonReturn": 1,
+    requestData = {"saleType": 1, "source": "pc", "noReasonReturn": True,
                    "currency": "CNY", "depotId": depotId, "subType": 1, "title": title, "subTitle": "副标题",
                    "categoryId": categoryId, "thirdCategoryId": thirdCategoryId, "category": category,
                    "pics": pic,
-                   "brandId": 10160, "marketCurrency": "JPY", "setAgentPrice": 0,
+                   "brandId": 10160, "marketCurrency": "JPY", "setAgentPrice": False,
                    "catalogList": [{"directPrice": m, "propertyValue": "白色", "pic": None,
                                     "catalogId": None, "parentCatalogId": None, "limitNum": 0, "marketPrice": None,
                                     "virtualStock": None, "marketAmount": 0, "stock": "100", "sku": None,
@@ -53,24 +46,21 @@ def createProduct(Cookie,
                          verify=False)
     response = data.text
     print(response)
-
+def getpicurl(m,n):
+    connector=mysql.connector.connect(host='localhost',user='root',passwd='root',database='haikun',auth_plugin='mysql_native_password')
+    curcor=connector.cursor()
+    sql='select picUrl from productpic LIMIT {},{}'.format(m,n)
+    curcor.execute(sql)
+    picurl_list =curcor.fetchall()
+    return picurl_list
 
 if __name__ == '__main__':
     from merchant_pc import getCookie
+    Cookie=getCookie.getCookies()
+    m=eval(input('请输入你想从第几张图片开始：'))
+    n=eval(input('请输入你想创建商品的数量：'))
+    picurl_list=getpicurl(m,n)  # 从第m张图片开始获取n张图片
+    for item in picurl_list:    #遍历的元素是元组
+        pic=list(item)
+        createProduct(Cookie, pic)
 
-    Cookie = getCookie.getCookies()
-    '''创建商品,循环创建'''
-    wk = xlrd.open_workbook('D:\python\study\中免商品信息.xlsx')
-    sheet = wk.sheets()[1]
-    x = int(input('请输入你想从第几张图片开始创建商品：'))
-    if x > sheet.nrows:
-        print('商品图片数量不足！！！')
-    else:
-        n = int(input('请输入要创建的商品数量：'))
-        if n > sheet.nrows - x:
-            print('商品图片数量不足！')
-        else:
-            for item in range(n):
-                pic = sheet.col_values(6, x, x + 1)  # 从表中索引为6列取值，值的返回是x行到x+1行
-                createProduct(Cookie, pic)
-                x += 1

@@ -1,6 +1,9 @@
 # author : comma
 # date : 2020/11/30 15:09
 
+'''
+获取商品图片地址，并保存到mysql中
+'''
 import requests
 import json
 import mysql.connector

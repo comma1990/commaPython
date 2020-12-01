@@ -21,13 +21,17 @@ def createProduct(Cookie,pic):  # pic的类型需要是一个列表
     categoryId = category[0]
     thirdCategoryId = category[2]
 
+    from get_data import getbrands  # 随机获取一个品牌id
+    brandId=getbrands.getrandombrand(Cookie)
+
+
     title = '蜡笔小新' + str(x) + '号'
     '''设置角色id——templateId'''
     requestData = {"saleType": 1, "source": "pc", "noReasonReturn": True,
                    "currency": "CNY", "depotId": depotId, "subType": 1, "title": title, "subTitle": "副标题",
                    "categoryId": categoryId, "thirdCategoryId": thirdCategoryId, "category": category,
                    "pics": pic,
-                   "brandId": 10160, "marketCurrency": "JPY", "setAgentPrice": False,
+                   "brandId": brandId, "marketCurrency": "JPY", "setAgentPrice": False,
                    "catalogList": [{"directPrice": m, "propertyValue": "白色", "pic": None,
                                     "catalogId": None, "parentCatalogId": None, "limitNum": 0, "marketPrice": None,
                                     "virtualStock": None, "marketAmount": 0, "stock": "100", "sku": None,

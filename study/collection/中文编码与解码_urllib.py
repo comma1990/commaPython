@@ -16,3 +16,8 @@ print(y)
 # 解码
 m=urllib.parse.unquote(y)
 print(m)
+
+
+#### 根据输入的值解码
+jie=urllib.parse.unquote('prods%5B0%5D=c43698914%2C1%2C50%2C101')
+print(jie)

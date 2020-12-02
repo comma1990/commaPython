@@ -18,7 +18,7 @@ class TransactionProcess():
             'accept-version': '1.0.0',
             'sign': '9df5193f8598b3f0b12af530ee530d86'}
 
-    def searchallproducts(self):# 判断全部商品是否为空，不为空返回第一个商品id
+    def searchallproducts(self):  # 判断全部商品是否为空，不为空返回第一个商品id
         url = 'https://api.shop2cn.com/sqbuyer/api/prod/sqsearch'
         data = {"pageIndex": 1, "sortType": 1, "sortMode": 0, "keyword": ""}
         resp = requests.post(url, headers=self.headers, json=data, verify=False)
@@ -31,7 +31,7 @@ class TransactionProcess():
         else:
             print('------------------全部商品无数据，请检查')
 
-    def productdetail(self, productId):
+    def productdetail(self, productId): # 获取商品详情
         url = 'https://api.shop2cn.com/sqbuyer/api/prod/sqdetail?productid={0}'.format(productId)
         resp = requests.get(url, headers=self.headers, verify=False)
         json_data = json.loads(resp.text)

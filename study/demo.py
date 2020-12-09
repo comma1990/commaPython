@@ -1,6 +1,16 @@
 # author : comma
 # date : 2020/10/15 10:43
 
+import openpyxl
+wb=openpyxl.Workbook('/Users/sun/PycharmProjects/commaPython/study/12306抢票/车站编号.xlsx')
+sheet=wb.active
+lst=[] #存取所有车站的名称及编号
+for row in sheet.rows: # 遍历所有的行
+    sub_list=[]
+    for cell in row: # 遍历每一行中的单元格，每一行的结果放到sub_list中，再将sub_list添加到lst中
+        sub_list.append(cell.value)
+    lst.append(sub_list)
+print(dict(lst)) #将列表转换成字典，后期根据字典的键查找值（即：根据车站名字查找代号）
 
 
 

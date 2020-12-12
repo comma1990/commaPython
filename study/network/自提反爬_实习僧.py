@@ -1,6 +1,18 @@
 #author : comma
 #date : 2020/12/12 12:36
 
+'''
+爬取数字的时候发现是乱码，F12定位元素的值，复制出来后通过utf-8编码，三个字节为一个字符，找出规律
+
+print('-/天'.encode('utf-8'))
+b'\xee\x83\xb4\xee\x93\xa6\xee\xb1\x99-\xee\x83\xb4\xee\x81\x91\xee\xb1\x99/\xe5\xa4\xa9'--->'120-180/天'
+
+\xee\x83\xb4--->1
+\xee\x93\xa6--->2
+\xee\xb1\x99--->0
+\xee\x81\x91--->8
+'''
+
 import requests
 import urllib3
 from bs4 import BeautifulSoup
@@ -24,10 +36,12 @@ def detail_url(url):
     # 获取薪水
     salary=bs.select('.job_money.cutom_font')[0].text.encode('utf-8') # 获取class="job_money cutom_font"的标签，因为class是两个属性修饰的，中间不加空格
     # salary=salary.replace('\xe5\xa4\xa9','天')
-    salary=salary.replace(b'\xef\xa1\xbf',b'1')
-    salary=salary.replace(b'\xef\x92\x89',b'2')
-    salary=salary.replace(b'\xee\x98\xa0',b'0')
-    salary=salary.replace(b'\xee\x80\x8b',b'8')
+    salary=salary.replace(b'\xee\x83\xb4',b'1')
+    salary=salary.replace(b'\xee\x93\xa6',b'2')
+    salary=salary.replace(b'\xee\xb1\x99',b'0')
+    salary=salary.replace(b'\xee\x81\x91',b'8')
+    salary=salary.replace(b'\xee\xa2\xa9',b'3')
+    salary=salary.replace(b'\xef\x82\x81',b'5')
     salary=salary.decode('utf-8')
     print(title,company_name,salary)
 

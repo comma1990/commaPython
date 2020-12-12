@@ -36,6 +36,12 @@ def getAddHoursTime():
     return result
 
 
+def getAddMinutesTime1():
+    data = datetime.datetime.now()
+    offset = datetime.timedelta(minutes=1)
+    result = (data + offset).strftime('%Y-%m-%dT%H:%M:%S.000Z')
+    return result
+
 def getAddMinutesTime2():
     data = datetime.datetime.now()
     offset = datetime.timedelta(minutes=2)

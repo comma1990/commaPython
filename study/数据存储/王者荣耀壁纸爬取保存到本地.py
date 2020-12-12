@@ -16,12 +16,12 @@ import os
 from urllib import request
 
 
-def wangzhewallpaper(pageid):
+def wangzhewallpaper(pageid,timetample):
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
                'Referer': 'https: // pvp.qq.com /'
                }
-    url = f'https://apps.game.qq.com/cgi-bin/ams/module/ishow/V1.0/query/workList_inc.cgi?activityId=2735&sVerifyCode=ABCD&sDataType=JSON&iListNum=20&totalpage=0&page={pageid}&iOrder=0&iSortNumClose=1&iAMSActivityId=51991&_everyRead=true&iTypeId=2&iFlowId=267733&iActId=2735&iModuleId=2735&_=1606875613014'
+    url = f'https://apps.game.qq.com/cgi-bin/ams/module/ishow/V1.0/query/workList_inc.cgi?activityId=2735&sVerifyCode=ABCD&sDataType=JSON&iListNum=20&totalpage=0&page={pageid}&iOrder=0&iSortNumClose=1&iAMSActivityId=51991&_everyRead=true&iTypeId=2&iFlowId=267733&iActId=2735&iModuleId=2735&_={timetample}'
     urllib3.disable_warnings()
     responsedata = requests.get(url, headers=headers, verify=False)
     # json_data=responsedata.text.replace('jQuery17104536339297060099_1606875519516(','').replace(')','') # replace替换
@@ -50,7 +50,8 @@ def save():
 
 def save2():
     for i in range(23):
-        wallpaper_list=wangzhewallpaper(i)
+        timetample=int(round(time.time()*1000))
+        wallpaper_list=wangzhewallpaper(i,timetample)
         for item in wallpaper_list:
             pic_url = urllib.parse.unquote(item['sProdImgNo_8']).replace('200', '0')
             pic_name = urllib.parse.unquote(item['sProdName'])

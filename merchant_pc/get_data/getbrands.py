@@ -24,7 +24,7 @@ def getbrands(Cookie, key):
 
 
 def getrandombrand(Cookie):
-    m = random.randint(0, 26)
+    m = random.randint(0, 20)
     key = chr(ord('a') + m)
     brands = getbrands(Cookie, key)
     l = len(brands)

@@ -10,11 +10,12 @@ import urllib3
 def getCookies():
     urllib3.disable_warnings()
     url = 'https://www.shop2cn.com/service/shop/api/accountlogin'  # 公版登录地址
+    # url='https://www.crossbiz.shop/service/shop/api/accountlogin' # 洋货街测试
     requestData = {"username": "18862396927",
                    "password": "q41ZxiimH+QTNSkdwYc1ybbNMo7c/vbuU+L2iRhEtTe1C+MyWk6XfDkCuPgj5JgoTIB4Cxmn/G2ECfbRyuxFN9mLllnUr0P7Lj2m4otCxyJ6ElGQx4vtQl+Uqb44zwP5wz6Ng7PUFFBEtDVyGvo6t3N4lTuWH/NN4C6xYKWsoNE="}
 
-    # requestData={"username":"16011112222","password":"kSe/n6c23Zai4PbiB1+ISQhXO9WGqU3AeMqqscH+Ce3k/PyNlMx6zrKhaPSvUzWbtSdfx9zFl3Btx5H2cKpWVhj/nymmQfp4LFhFPXa5rHBKOPVRg1t2VUzWz42AGAUasgJ7hlAqOHIL/iJWvYfMsDzApLv83bqhbiBg20iCZos="}
-
+    # requestData={"username":"16400001111","password":"kSe/n6c23Zai4PbiB1+ISQhXO9WGqU3AeMqqscH+Ce3k/PyNlMx6zrKhaPSvUzWbtSdfx9zFl3Btx5H2cKpWVhj/nymmQfp4LFhFPXa5rHBKOPVRg1t2VUzWz42AGAUasgJ7hlAqOHIL/iJWvYfMsDzApLv83bqhbiBg20iCZos="}
+    # requestData={"username":"121131","password":"JC95CB9yzk8yWZBiJPirFmEBnhC9qSba+fEf2fx5vZHKJ9FwFBkQDR/2zaOAz6jKfeix8SMjhpX1NoBmTiXtbmDvF1LIayHbUojZaljQ7ze6eU9B87IOCePMUW88xPQilx/aTYoxGoIZmpVC4Q0BdU22VD/cdALYuA81Vp9nEM8=","wxAppName":"pcsqSeller_500011795"}
 
 
     headers = {'Accept': 'application/json, text/plain, */*',

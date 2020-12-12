@@ -21,8 +21,8 @@ def getDepot(Cookie):
                          headers=headers,
                          verify=False)
     response = data.text
-    if json.loads(response)['data']['total'] > 0:
-        depotId = json.loads(response)['data']['depotList'][1]['depotId']
+    if json.loads(response)['data']['total'] != 0:
+        depotId = json.loads(response)['data']['depotList'][0]['depotId']
         # print('仓库编号：'+depotId)
         return depotId
     else:

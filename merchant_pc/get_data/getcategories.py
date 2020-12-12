@@ -16,7 +16,7 @@ def getcategories(Cookie):
     responsedata=requests.get('https://www.shop2cn.com/service/order/api/product/categories',headers=headers,verify=False)
     # print(responsedata.text)
     data=json.loads(responsedata.text)['data']['list']
-    x=random.randint(0,25)
+    x=random.randint(0,15)
     leve1=data[x]
     leve1_value=leve1['value']
     leve2=leve1['children'][0]

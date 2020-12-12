@@ -8,9 +8,10 @@ from urllib import parse
 import threading
 from queue import Queue
 import os
+import urllib3
 
 headers = {
-    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36',
     'referer': 'https://pvp.qq.com/web201605/wallpaper.shtml'}
 
 
@@ -30,9 +31,10 @@ class Producer(threading.Thread):
         self.image_url_queue = image_url_queue
 
     def run(self):
+        urllib3.disable_warnings()
         while not self.page_queue.empty():  # 判断队列是否为空
             page_url = self.page_queue.get()  # 获取队列中的值，page_queue队列就是放页面地址的
-            responsedata = requests.get(page_url, headers=headers)  # 获取请求结果
+            responsedata = requests.get(page_url, headers=headers,verify=False)  # 获取请求结果
             json_data = responsedata.json()  # 请求结果转换成json格式
             # 解析数据，并将图片名字和图片url的列表放入到字典中
             d = {}
@@ -43,7 +45,7 @@ class Producer(threading.Thread):
                 d[sProdName] = image_url_list
             # 遍历字典，以图片名称创建文件夹，并遍历每个列表中的图片的url放入到图片url队里里（image_url_queue）
             for key in d:
-                dirpath = os.path.join('/Users/sun/Downloads/王者荣耀皮肤',
+                dirpath = os.path.join('D:\素材\王者荣耀',
                                        key.strip(' ').replace('·', '').replace('1:1', ''))  # 拼接路径
                 # 因为是多线程，所以需要先判断文件夹是否已经存在
                 if not os.path.exists(dirpath):

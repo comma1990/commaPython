@@ -1,6 +1,10 @@
 # @Author  :  comma 
 # @Date    :  2020-12-07 22:50
 
+'''
+多次使用
+WebDriverWait方法，以及expected_conditions方法结合By方法定位元素
+'''
 
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait  # 显示等待方法

@@ -1,0 +1,13 @@
+scrapy框架的工作原理
+    Scrapy Engin（引擎）：scrapy框架的核心部分，负责在spider和item pipeline、Downloader、scheduler中间通信、传递数据等
+    Spider（爬虫）：发送需要爬取的连接给引擎，最后引擎把其它模块请求回来的数据再发送给爬虫，爬虫就去解析想要的数据。
+    Scheduler（调度器）：负责接收引擎发送过来的请求，并按照一定的方式进行排列和整理，负责调度请求的顺序等。
+    Downloader（下载器）：负责接收引擎过来的下载请求，然后去网络上下载队形的数据再交给引擎。
+    Item Pipeline（管道）：负责将爬虫传递过来的数据进行保存
+    Downloader Middlewares（下载中间件）：可以扩展下载器和引擎之间通信功能的中间件
+    Spider Middlewares（Spider中间件）：可以扩展引擎和爬虫之间通信功能的中间件
+
+
+创建scrapy框架流程：
+    进入到想要创建的目录下
+    输入：scrapy startproject 项目名

@@ -10,4 +10,20 @@ scrapy框架的工作原理
 
 创建scrapy框架流程：
     进入到想要创建的目录下
-    输入：scrapy startproject 项目名
+    1、输入：scrapy startproject 项目名  ——创建项目
+    2、创建爬虫模板：scrapy genspider 爬虫名 域名  如：scrapy genspider qustory xbiquge.la   ——创建爬虫
+    3、编写爬虫代码
+    4、编写pipeline
+        ·yield的三种数据提交方式
+            yield{} 字典      推送给pipeline
+            yield item 对象   推送给pipeline
+            yield scrap.Request() Request对象，推送给调度器
+    5、数据存储
+
+
+scrapy提取数据的方法
+xpath()：返回选择器列表，它代表由指定的xpath表达式参数选择的节点
+css()：返回选择器列表，它代表由指定css表达式作为参数所选择的节点
+re():返回Unicode字符串列表，当正则表达式被赋予作为参数时提取
+extract():返回一个Unicode字符串以及所选择的数据
+extract_first():返回第一个Unicode字符串以及所选择的数据

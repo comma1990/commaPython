@@ -9,6 +9,14 @@ from itemadapter import ItemAdapter
 
 
 class QustoryPipeline:
+    def open_spider(self, spider):
+        self.file=open('元尊.txt','w',encoding='utf-8')
+
     def process_item(self, item, spider):
-        print(item)
+        info=''.join(item['title'])+'\n'+item['content']+'\n'
+        self.file.write(info)
+        # print(item)
         return item
+
+    def close_spider(self, spider):
+        self.file.close()

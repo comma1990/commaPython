@@ -22,8 +22,15 @@ scrapy框架的工作原理
 
 
 scrapy提取数据的方法
-xpath()：返回选择器列表，它代表由指定的xpath表达式参数选择的节点
-css()：返回选择器列表，它代表由指定css表达式作为参数所选择的节点
-re():返回Unicode字符串列表，当正则表达式被赋予作为参数时提取
-extract():返回一个Unicode字符串以及所选择的数据
-extract_first():返回第一个Unicode字符串以及所选择的数据
+    xpath()：返回选择器列表，它代表由指定的xpath表达式参数选择的节点
+    css()：返回选择器列表，它代表由指定css表达式作为参数所选择的节点
+    re():返回Unicode字符串列表，当正则表达式被赋予作为参数时提取
+    extract():返回一个Unicode字符串以及所选择的数据
+    extract_first():返回第一个Unicode字符串以及所选择的数据
+
+setting配置文件：
+    BOT_NAME = 'qustory' 爬虫的名字，在使用startproject命令创建时自动被赋值
+    CONCURRENT_REQUESTS = 32 并发请求的最大值，默认为16
+    DEFAULT_REQUEST_HEADERS 默认的请求头
+    DOWNLOAD_DELAY = 1  #下载延时设置
+    LOG_ENABLED=False # 默认为True，显示日志信息

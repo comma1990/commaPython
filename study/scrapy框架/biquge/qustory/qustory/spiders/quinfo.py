@@ -8,9 +8,12 @@ class QuinfoSpider(scrapy.Spider):
 
     def parse(self, response):
         title=response.xpath('//h1/text()').extract()
-        content=response.xpath('string(//div[@id="content"])').extract_first().strip()
+        content=response.xpath('string(//div[@id="content"])').extract_first().strip().replace('    ','\n\t')
+        next_url=response.xpath('//div[@class="bottem1"]/a[4]/@href').extract_first()
+        # print(next_url)
         yield {
             'title':title,
             'content':content
         }
+        yield scrapy.Request(next_url,callback=self.parse)
         # print(title,content)

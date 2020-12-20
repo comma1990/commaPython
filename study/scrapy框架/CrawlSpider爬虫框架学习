@@ -1,0 +1,25 @@
+CrawlSpider爬虫
+    继承自Spider，在之前的Spider的基础上增加了新的功能，可以定义爬取的url的规则，以后scrapy喷到满足条件的url都进行爬取，而不是手动的yield request。
+
+创建CrawlSpider爬虫的语法：
+    scrapy genspider -t crawl [爬虫名字][域名]
+
+LinkExtractors链接提取器：
+    使用LinkExtrators可以不用程序员自己提取想要的url，然后发送请求。这些工作都可以交给LinkExtrators，他会在所有爬的页面中找到满足规则的url，实现自动爬取。
+
+    主要参数：
+        allow：允许的url。所有满足这个正则表达式的url都会被提取
+        deny：禁止的url。所有满足这个正则表达式的url都不会被提取。
+        allow_domains：允许的域名。只有在这个里面指定的域名的url才会被提取。
+        deny_domains：禁止的域名。所有在这个里面指定的域名的url都不会被提取。
+        restrict_xpaths:严格的xpath。和allow共同过滤链接
+
+
+异步保存MySQL数据
+    操作步骤
+        1.编写配置文件
+        2.读取配置文件
+        3.创建数据库
+        4.使用twisted.enterprise.adbapi来创建连接池
+        5.使用runinteraction来运行插入sql语句的函数
+        6.使用cursor对象，执行SQL语句，cursor对象位于插入SQL语句函数的第一个非self参数位置。

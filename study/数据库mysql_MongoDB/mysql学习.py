@@ -6,7 +6,7 @@ import mysql.connector
 
 # 创建连接
 def insert():
-    connector = mysql.connector.connect(host='localhost', user='root', passwd='root', database='comma',
+    connector = mysql.connector.connect(host='localhost', user='root', passwd='sun123456', database='comma',
                                         auth_plugin='mysql_native_password')
     # print(connector)
     mycursor = connector.cursor()

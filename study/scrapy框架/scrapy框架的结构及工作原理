@@ -34,3 +34,48 @@ setting配置文件：
     DEFAULT_REQUEST_HEADERS 默认的请求头
     DOWNLOAD_DELAY = 1  #下载延时设置
     LOG_ENABLED=False # 默认为True，显示日志信息
+
+下载器中间件
+    位于引擎和下载器之间通信的中间件
+    作用：
+        设置代码，更换请求头等来达到反反爬虫的目的
+    编写下载器中间件，需要下载器中实现两个方法：
+        process_request(self,request,spider),在请求发送之前会执行
+        process_response(self,request,response,spider),数据下载到引擎之前执行
+    process_request方法详解：
+        功能：
+            下载器在发送请求之前调用执行，一般可以在这里设置随机代理IP等
+        参数：
+            request：发送请求的request对象
+            spider：发送请求的spider对象
+        返回值：
+            ①返回None：scrapy将继续处理request，执行其他中间件的相应方法，知道合适的下载器处理函数被调用。
+            ②返回response对象：scrapy将不会调用任何其他的process_request方法，将直接返回这个response对象。
+                              已经激活的中间件的process_response()方法则会在每个response返回时被调用。
+            ③返回request对象:不再使用之前的request对象去下载数据，而是根据现在返回的request对象返回数据。
+            ④：如果该方法中跑出了异常，则会调用process_exception方法
+    process_response方法详解
+        功能：
+            下载器下载的数据到引擎中间会执行的方法
+        参数：
+            request：发送请求的request对象
+            response：被处理的response对象
+            spider：spider对象
+        返回值：
+            返回response对象：会将这个新的response对象传给其它中间件，最终传个爬虫。
+            返回request对象：下载器链被切断，返回的request会重新被下载器调度下载。
+            如果该方法抛出异常，那么调用requests的errback方法，如果没有指定这个方法，那么会抛出一个异常。
+
+Scrapy动态UA的设置：
+    fake-useragent一个可以频繁更换user-agent的防反爬利器
+
+    from fake_useragent import UserAgent
+    ua=UserAgent()
+    ua.ie #ie浏览器
+    ua.msie # Mac浏览器
+    ua.chrome #chrome浏览器
+    ua.random #随机浏览器
+
+    使用：
+        def process_request(self,request,spider):
+            request.headers['User-Agent']=UserAgent().random

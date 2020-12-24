@@ -1,8 +1,6 @@
 # author : comma
 # date : 2020/10/14 12:28
-import requests
-import urllib3
-import json
+
 
 
 month = int(input('繁殖几个月？： '))

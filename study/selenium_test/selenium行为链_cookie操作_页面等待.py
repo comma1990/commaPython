@@ -4,7 +4,7 @@
 
 '''
 行为链如何使用：
-    导入from selenium.webdriver.comma.action_chains import ActionChains
+    导入from selenium_test.webdriver.comma.action_chains import ActionChains
     创建对象actions=ActionChains(driver)
     移动到某元素 actions.move_to_element(element)
     文本框填入内容 actions.send_keys_to_element(element,'python')

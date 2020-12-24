@@ -60,6 +60,7 @@ class TrainSpider():
         driver.execute_script('arguments[0].value="%s"' % toStation_code, toStation_input)
         driver.execute_script('arguments[0].value="%s"' % self.train_date, train_date_input)
 
+
         # 单击查询按钮，执行查询操作
         driver.find_element_by_id('query_ticket').click()
 
@@ -183,7 +184,7 @@ class TrainSpider():
 
 
 def start():
-    spider = TrainSpider('上海', '连云港', '2020-12-15', {'G8262': ['O', 'M']},['孙陆'])  # o表示的是二等座，M表示一等座
+    spider = TrainSpider('上海', '连云港', '2020-12-30', {'G8262': ['O', 'M']},['孙陆'])  # o表示的是二等座，M表示一等座
     spider.run()
     spider.init_station_code()
 

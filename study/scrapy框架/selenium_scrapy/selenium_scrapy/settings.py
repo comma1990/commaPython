@@ -1,4 +1,4 @@
-# Scrapy settings for zcoolspider project
+# Scrapy settings for selenium_scrapy project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,14 +7,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'zcoolspider'
+BOT_NAME = 'selenium_scrapy'
 
-SPIDER_MODULES = ['zcoolspider.spiders']
-NEWSPIDER_MODULE = 'zcoolspider.spiders'
+SPIDER_MODULES = ['selenium_scrapy.spiders']
+NEWSPIDER_MODULE = 'selenium_scrapy.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'zcoolspider (+http://www.yourdomain.com)'
+#USER_AGENT = 'selenium_scrapy (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -37,22 +37,23 @@ ROBOTSTXT_OBEY = False
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
-#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-#   'Accept-Language': 'en',
-#}
+DEFAULT_REQUEST_HEADERS = {
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'Accept-Language': 'en',
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36'
+}
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'zcoolspider.middlewares.ZcoolspiderSpiderMiddleware': 543,
-#}
+# SPIDER_MIDDLEWARES = {
+#    'selenium_scrapy.middlewares.SeleniumScrapySpiderMiddleware': 300,
+# }
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'zcoolspider.middlewares.ZcoolspiderDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   'selenium_scrapy.middlewares.SeleniumScrapyDownloaderMiddleware': 300,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -62,11 +63,9 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-from scrapy.pipelines.images import ImagesPipeline
-ITEM_PIPELINES = {
-   'zcoolspider.pipelines.ZcoolspiderPipeline': 300,
-   #  'scrapy.pipelines.images.ImagesPipeline':300
-}
+#ITEM_PIPELINES = {
+#    'selenium_scrapy.pipelines.SeleniumScrapyPipeline': 300,
+#}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -88,6 +87,3 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-
-# IMAGES_STORE='/Users/sun/PycharmProjects/commaPython/study/scrapy框架/zcool/pic' #Mac存储路径
-IMAGES_STORE='D:\素材\zcool'

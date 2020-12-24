@@ -1,0 +1,11 @@
+selenium和scrapy使用操作步骤
+    创建scrapy项目
+    创建爬虫文件
+    下载器中间件创建浏览器对象(settings中需要开启下载器中间件)
+存在问题：
+    浏览器没有关闭
+解决方案：
+    scrapy官网文档：https://scrapy-chs.readthedocs.io/zh_CN/0.24/topics/signals.html
+                  https://www.osgeo.cn/scrapy/topics/signals.html
+    信号：
+        scrapy使用信号来通知事情的发生，你可以在你的scrapy项目中捕获一些信号（使用extension）来完成额外的工作或添加额外的功能，扩展scrapy

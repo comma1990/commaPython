@@ -63,8 +63,8 @@ class SeleniumScrapyDownloaderMiddleware:
     # scrapy acts as if the downloader middleware does not modify the
     # passed objects.
 
-    def __init__(self):     #初始化中创建
-        self.driver=Chrome()
+    # def __init__(self):     #初始化中创建
+    #     self.driver=Chrome()
 
     @classmethod
     def from_crawler(cls, crawler):
@@ -74,8 +74,8 @@ class SeleniumScrapyDownloaderMiddleware:
         return s
 
     def process_request(self, request, spider):
-        self.driver.get(request.url)
-        html=self.driver.page_source
+        spider.driver.get(request.url)
+        html=spider.driver.page_source
         return HtmlResponse(url=request.url,request=request,body=html,encoding='utf-8')
 
 

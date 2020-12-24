@@ -44,4 +44,5 @@ def writeToExcel():
 #
 # 定义成方法后，必须要在方法外部调用才会执行！！！
 #
-writeToExcel()
+if __name__ == '__main__':
+    writeToExcel()

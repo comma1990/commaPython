@@ -9,3 +9,12 @@ selenium和scrapy使用操作步骤
                   https://www.osgeo.cn/scrapy/topics/signals.html
     信号：
         scrapy使用信号来通知事情的发生，你可以在你的scrapy项目中捕获一些信号（使用extension）来完成额外的工作或添加额外的功能，扩展scrapy
+
+selenium结合scrapy使用总结：
+    ①爬虫类中添加类方法，并在类方法中给爬虫添加浏览器对象属性
+    ②修改下载器中间件的方法process_request，
+        通过调用爬虫浏览器属性的get/post方法获取页面返回结果，
+        作为爬虫HtmlResponse方法的参数，
+        返回HtmlResponse处理结果（response），
+        解析上面返回的结果
+    ③关闭爬虫方法中，关闭爬虫的浏览器对象

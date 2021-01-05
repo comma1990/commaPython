@@ -1,4 +1,4 @@
-# Scrapy settings for zcoolspider project
+# Scrapy settings for gif588ku project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,17 +7,17 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'zcoolspider'
+BOT_NAME = 'gif588ku'
 
-SPIDER_MODULES = ['zcoolspider.spiders']
-NEWSPIDER_MODULE = 'zcoolspider.spiders'
+SPIDER_MODULES = ['gif588ku.spiders']
+NEWSPIDER_MODULE = 'gif588ku.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'zcoolspider (+http://www.yourdomain.com)'
+#USER_AGENT = 'gif588ku (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = False
+ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -45,13 +45,13 @@ ROBOTSTXT_OBEY = False
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'zcoolspider.middlewares.ZcoolspiderSpiderMiddleware': 543,
+#    'gif588ku.middlewares.Gif588KuSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'zcoolspider.middlewares.ZcoolspiderDownloaderMiddleware': 543,
+#    'gif588ku.middlewares.Gif588KuDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -62,11 +62,9 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-from scrapy.pipelines.images import ImagesPipeline
-ITEM_PIPELINES = {
-   # 'zcoolspider.pipelines.ZcoolspiderPipeline': 300,
-    'scrapy.pipelines.images.ImagesPipeline':300
-}
+#ITEM_PIPELINES = {
+#    'gif588ku.pipelines.Gif588KuPipeline': 300,
+#}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -88,6 +86,3 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-
-# IMAGES_STORE='/Users/sun/PycharmProjects/commaPython/study/scrapy框架/zcool/pic' #Mac存储路径
-IMAGES_STORE='D:\素材\zcool'

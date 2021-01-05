@@ -14,14 +14,14 @@ class Ku588Spider(CrawlSpider):
 
     rules = (
         Rule(LinkExtractor(allow=r'https://588ku.com/gif/0-0-0-default-1/'),  follow=True),
-        Rule(LinkExtractor(allow=r'https://588ku.com/gif1/\d+.html'), callback='parse_item', follow=False),
+        Rule(LinkExtractor(allow=r'/gif1/\d+.html'), callback='parse_item', follow=False),
     )
 
     def parse_item(self, response):
-        gif_url=response.xpath('//div[@class="img-box gif"]/img/@src').get()
+        image_urls=response.xpath('//div[@class="img-box gif"]/img/@src').getall()
         name=response.xpath('//div[@class="img-box gif"]/img/@title').get()
 
-        item=Gif588KuItem()
-        item.gif_url=gif_url
-        item.name=name
+        item=Gif588KuItem(image_urls=image_urls,name=name)
+        # item['image_urls']=image_urls
+        # item['name']=name
         yield item

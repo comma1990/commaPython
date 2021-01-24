@@ -1,0 +1,5 @@
+Scrapy-Redis：
+    https://github.com/rmax/scrapy-redis
+
+
+修改之前的普通的爬虫配置文件即可：

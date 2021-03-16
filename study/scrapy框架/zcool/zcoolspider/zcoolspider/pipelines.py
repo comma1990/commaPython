@@ -22,8 +22,7 @@ class ZcoolspiderPipeline(ImagesPipeline):#自定义用于下载图片的pipelin
         return image_requests
 
 
-        # urls = ItemAdapter(item).get(self.images_urls_field, [])
-        # return [Request(u) for u in urls]
+
 
 
 
@@ -40,5 +39,4 @@ class ZcoolspiderPipeline(ImagesPipeline):#自定义用于下载图片的pipelin
 
 
 
-    # def process_item(self, item, spider):
-    #     return item
+

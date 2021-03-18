@@ -35,5 +35,6 @@ if __name__ == '__main__':
     keyword={'key':'python商品31号'}
     zkey=urllib.parse.urlencode(keyword).split('=')[1]
     print(zkey)
-    for i in range(100):
-        search(zkey)
+    search(zkey)
+    # for i in range(100):
+    #     search(zkey)

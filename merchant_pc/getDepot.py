@@ -8,16 +8,16 @@ import json
 def getDepot(Cookie):
     # from merchant_pc.getCookie import getCookies  # cookie获取提取到方法外，调用该方法必须穿cookie
     # Cookie = getCookies()
+    # url='https://www.crossbiz.shop/service/order/api/depot/getDepotList'
+    url='https://www.shop2cn.com/service/order/api/depot/getDepotList'
     headers = {'Accept': 'application/json, text/plain, */*',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36',
-               'Host': 'www.shop2cn.com',
-               'Connection': 'keep - alive',
                'Cookie': Cookie
                }
     '''设置请求数据'''
     requestData = {"pageIndex": 1, "pageSize": 100}
     urllib3.disable_warnings()
-    data = requests.post('https://www.shop2cn.com/service/order/api/depot/getDepotList', json=requestData,
+    data = requests.post(url, json=requestData,
                          headers=headers,
                          verify=False)
     response = data.text

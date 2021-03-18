@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$USER_HOME$/Downloads/Python学习资料/python经典100例/JCP002.py" charset="UTF-8" />
-    <file url="file://$USER_HOME$/Downloads/Python学习资料/python经典100例/JCP003.py" charset="GBK" />
-    <file url="file://$USER_HOME$/Downloads/Python学习资料/python经典100例/JCP006.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../Python100题/JCP004.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../Python100题/JCP005.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../Python100题/JCP007.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../Python100题/JCP008.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../Python100题/JCP009.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../Python100题/JCP010.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../Python100题/JCP011.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../Python100题/JCP012.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../Python100题/JCP013.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../Python100题/JCP014.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../Python100题/JCP015.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../Python100题/JCP017.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../Python100题/JCP018.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../Python100题/JCP019.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../Python100题/JCP020.py" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/../Python100题/JCP021.py" charset="GBK" />
   </component>
 </project>

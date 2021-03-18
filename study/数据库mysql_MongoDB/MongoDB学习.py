@@ -52,28 +52,28 @@ def find():
     result = collection.find()
     for item in result:
         print(item)
-    print('-----------------------------')
+    print('----------1-------------------')
 
     luban = collection.find({'name': '鲁班'})
     for item in luban:
         print(item)
-    print('-----------------------------')
+    print('-----------2------------------')
     # 模糊查询
     regex = collection.find({'name': {'$regex': '.*庄.*'}})
     for item in regex:
         print(item)
-    print('-----------------------------')
+    print('------------3-----------------')
     # 排序 pymongo.ASCENDING升序,pymongo.DESCENDING降序
     asc = collection.find().sort('age', pymongo.DESCENDING)
     for item in asc:
         print(item)
-    print('-----------------------------')
+    print('-------------4----------------')
 
     # 降序后跳过前三条数据，查第四和第五条数据
     asc = collection.find().sort('age', pymongo.DESCENDING).skip(3).limit(2)
     for item in asc:
         print(item)
-    print('-----------------------------')
+    print('------------5-----------------')
 
 
 if __name__ == '__main__':

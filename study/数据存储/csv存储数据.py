@@ -21,16 +21,23 @@ CSV文件的操作：
 import csv
 
 ######### 向csv文件写入数据 ################
-# with open('csv存储数据.csv', 'a+', newline='') as file:
-#     writer = csv.write(file)
-#     # 一次写一行数据
-#     writer.writerow(['逗号', 30, 88])
-#     # 一次写多行
-#     lst = [['二豆', 24, 90], ['渣渣', 28, 80]]
-#     writer.writerows(lst)
+def write():
+    with open('csv存储数据.csv', 'a+', newline='') as file:
+        writer = csv.write(file)
+        # 一次写一行数据
+        writer.writerow(['逗号', 30, 88])
+        # 一次写多行
+        lst = [['二豆', 24, 90], ['渣渣', 28, 80]]
+        writer.writerows(lst)
 
 ########## 从csv读取数据 ##################
-with open('csv存储数据.csv','r',newline='') as file1:
-    reader=csv.reader(file1)
-    for item in reader:
-        print(item)
+def read():
+    with open('csv存储数据.csv','r',newline='') as file1:
+        reader=csv.reader(file1)
+        for item in reader:
+            print(item)
+
+
+if __name__ == '__main__':
+    write()
+    # read()

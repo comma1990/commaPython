@@ -81,7 +81,7 @@ def element_css_selector():  # 通过css样式来定位元素
     # search_input.send_keys('通过id定位要带#')
     search_input = chrome.find_element_by_css_selector('.b_searchbox')  # 通过css来定位元素，使用class定位时要加 .
     search_input.send_keys('通过class定位要带.')
-    chrome.quit()
+    # chrome.quit()
 
 
 def element_xpath():  # 通过xpath定位搜索框
@@ -146,8 +146,8 @@ if __name__ == '__main__':
     # element_class_name()
     # element_tag_name()
     # element_link_text()
-    # element_css_selector()
+    element_css_selector()
     # element_xpath()
     # checkbox()
-    selectbox()
+    # selectbox()
     # anli()

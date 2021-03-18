@@ -25,25 +25,20 @@ def createProduct(Cookie,pic):  # pic的类型需要是一个列表
     brandId=getbrands.getrandombrand(Cookie)
 
 
-    title = '蜡笔小新' + str(x) + '号'
+    title = '不限境内外' + str(x) + '号'
     '''设置角色id——templateId'''
     requestData = {"saleType": 1, "source": "pc", "noReasonReturn": True,
                    "currency": "CNY", "depotId": depotId, "subType": 1, "title": title, "subTitle": "副标题",
                    "categoryId": categoryId, "thirdCategoryId": thirdCategoryId, "category": category,
                    "pics": pic,
                    "brandId": brandId, "marketCurrency": "JPY", "setAgentPrice": False,
-                   "catalogList": [{"directPrice": m, "propertyValue": "白色", "pic": None,
-                                    "catalogId": None, "parentCatalogId": None, "limitNum": 0, "marketPrice": None,
-                                    "virtualStock": None, "marketAmount": 0, "stock": "100", "sku": None,
-                                    "barcode": None,
-                                    "propertyList": [{"name": "颜色", "value": "白色"}],
-                                    "agentPriceList": [{"agentPrice": None, "agentTypeId": 28}]},
+                   "catalogList": [
                                    {"directPrice": n, "propertyValue": "黑色", "pic": None, "catalogId": None,
                                     "parentCatalogId": None, "limitNum": 0, "marketPrice": None, "virtualStock": None,
                                     "marketAmount": 0, "stock": "200", "sku": None, "barcode": None,
                                     "propertyList": [{"name": "颜色", "value": "黑色"}],
                                     "agentPriceList": [{"agentPrice": None, "agentTypeId": 28}]}],
-                   "expressDelivery": 1, "collectionGoods": None, "catalogStatus": 101, "cardInfo": 1}
+                   "expressDelivery": 1, "collectionGoods": None, "catalogStatus": 101, "cardInfo": 1,'saleArea':3}
     urllib3.disable_warnings()
     data = requests.post('https://www.shop2cn.com/service/order/api/product/publish', json=requestData,
                          headers=headers,
